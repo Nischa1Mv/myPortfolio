@@ -5,6 +5,7 @@ import Menu from "../../menu/menu";
 import Socials from "../../socials/socials";
 import gsap from "gsap";
 import ScrollToPlugin from "gsap/ScrollToPlugin";
+import Image from "next/image";
 gsap.registerPlugin(ScrollToPlugin);
 
 const Home: React.FC = () => {
@@ -99,12 +100,11 @@ const Home: React.FC = () => {
           </div>
           <div className="w-[105%] flex justify-center items-center">
             <div className="border-4 mt-[8rem] overflow-hidden shadow-black-xl">
-              <img
-                className=""
+              <Image
                 src="https://media.gq.com/photos/646baa821fa990bc7018e902/master/w_1920,c_limit/GQ0723_Gosling_01.jpg"
                 alt="My_Image"
-                width="450px"
-                height="200px"
+                width={450}
+                height={200}
               />
             </div>
           </div>
