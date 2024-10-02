@@ -54,7 +54,7 @@ const Home: React.FC = () => {
       <div className="relative h-[85vh] bg-[#F1FAEE]" id="page1">
         <div
           className={`w-[40%] fixed right-0 top-0 flex py-2 transition-all duration-300 ${
-            menuOpen ? "shadow-lg" : "border-transparent "
+            menuOpen ? "shadow-lg text-[#111827] " : "border-transparent "
           } gap-10 items-center border justify-end pr-5 pl-2`}
         >
           <Menu isOpen={menuOpen} />
