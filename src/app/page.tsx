@@ -1,101 +1,88 @@
-import Image from "next/image";
+"use client";
+import { useState } from "react";
+import MenuButton from "./menu/menuButton";
+import Menu from "./menu/menu";
 
-export default function Home() {
+const Home: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen((prev) => !prev);
+  };
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      {/* --------------------------PAGE 1 -------------------------------*/}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      <div className=" h-[90vh]  bg-[#F1FAEE]  ">
+        <div className="flex">
+          <div className="grow flex-1"></div>
+          <div
+            className={`w-[40%] flex py-2 transition-all duration-300 ${
+              menuOpen ? "shadow-lg" : "border-transparent text-[#141414]"
+            } gap-10 items-center border justify-end pr-5 pl-2`}
           >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <Menu isOpen={menuOpen} />
+            <MenuButton toggleMenu={toggleMenu} menuOpen={menuOpen} />
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className="flex">
+          <div className="mt-14">
+            <div className=" ml-20 text-7xl font-bold text-[#37D299]">
+              {" "}
+              Nischal Mantri
+            </div>
+            <div className="ml-20 mt-4  text-6xl font-bold text-[#111827]">
+              Full Stack Developer
+            </div>
+            <p className="ml-20 mt-4 font-xl text-[#111827]">
+              I’m passionate about clean, functional design, believing in the
+              power of minimalism—where every line of code has a purpose and
+              every pixel tells a story. Whether I'm building robust back-end
+              systems or crafting intuitive front-end interfaces, my focus is
+              always on achieving a perfect balance between simplicity and
+              functionality.
+            </p>
+            <p className="ml-20  mt-4 font-xl text-[#111827]">
+              When I’m not immersed in coding, you’ll likely find me diving into
+              the latest tech articles or exploring new frameworks. In my free
+              time, I enjoy gaming and staying active at the gym, always
+              striving to improve myself. I also attend numerous tech events,
+              where I connect with fellow enthusiasts, share insights, and
+              collaborate on exciting projects.
+            </p>
+            <p className="ml-20 mt-4 font-xl text-[#111827]">
+              Whether it’s a challenging workout, an intense gaming session, or
+              a stimulating tech conference, I’m constantly pushing my limits
+              and seeking new ways to grow both personally and professionally.
+            </p>
+          </div>
+          <div className=" text-black w-[105%] flex justify-center items-center ">
+            {" "}
+            <div className="border-2 mt-[5rem]">
+              <img
+                className="rounded-xl"
+                src="https://thispersondoesnotexist.com"
+                alt="My_Image"
+                width="450px"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="w-full h-[10vh]"></div>
+
+      {/*--------------------------------- PAGE 2 -----------------------------*/}
+
+      <div className=" h-screen py-20 px-20">
+        <div className="text-2xl font-bold">
+          <span className="text-[#D23770]">My</span>
+          <span className="text-[#37D299]"> Projects</span>
+        </div>
+        <div className=""></div>
+      </div>
+    </>
   );
-}
+};
+
+export default Home;
