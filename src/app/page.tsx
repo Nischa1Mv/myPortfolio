@@ -71,7 +71,7 @@ const Home: React.FC = () => {
             <p className="mt-10 text-pretty text-sm font-semibold text-[#111827]">
               I’m passionate about clean, functional design, believing in the
               power of minimalism—where every line of code has a purpose and
-              every pixel tells a story. Whether I'm building robust back-end
+              every pixel tells a story. Whether I’m building robust back-end
               systems or crafting intuitive front-end interfaces, my focus is
               always on achieving a perfect balance between simplicity and
               functionality.
