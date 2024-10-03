@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-const NavBar: React.FC<{}> = () => {
+const NavBar: React.FC = () => {
   const [isMenu, setIsMenu] = useState(false);
 
   return (
