@@ -1,12 +1,9 @@
 "use client";
 import Socials from "../../socials/socials";
 import Image from "next/image";
-import { useState } from "react";
 import NavBar from "../../menu/NavBar";
 
 const Home: React.FC = () => {
-  const [isMenu, setIsMenu] = useState(false);
-
   return (
     <>
       {/* -------------------------- PAGE 1 ------------------------------- */}
