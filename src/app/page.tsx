@@ -1,7 +1,7 @@
 "use client";
 import Socials from "../../socials/socials";
 import Image from "next/image";
-import NavBar from "../../menu/NavBar";
+import NavBar from "./NavBar";
 
 const Home: React.FC = () => {
   return (
@@ -22,7 +22,6 @@ const Home: React.FC = () => {
       </div>
       <div className="relative w-full pt-2 h-[85vh] bg-[#F1FAEE]" id="page1">
         <NavBar />
-
         <div className="flex">
           <div className="mt-14 ml-24">
             <div className="text-7xl font-bold text-[#37D299]">

@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../../../menu/NavBar";
+import NavBar from "../NavBar";
 
 function page() {
   return (
