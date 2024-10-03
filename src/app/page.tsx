@@ -1,38 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
-import MenuButton from "../../menu/menuButton";
-import Menu from "../../menu/menu";
 import Socials from "../../socials/socials";
-import gsap from "gsap";
-import ScrollToPlugin from "gsap/ScrollToPlugin";
 import Image from "next/image";
-gsap.registerPlugin(ScrollToPlugin);
+import { useState } from "react";
+import NavBar from "../../menu/NavBar";
 
 const Home: React.FC = () => {
-  useEffect(() => {
-    // Function to scroll smoothly to Page 2
-    const scrollToPage2 = () => {
-      gsap.to(window, {
-        duration: 2,
-        scrollTo: "#page2", // Target the ID of the section you want to scroll to
-        ease: "power2.inOut",
-      });
-    };
-
-    const scrollButton = document.getElementById("scroll-button");
-    scrollButton?.addEventListener("click", scrollToPage2);
-
-    // Cleanup function to remove the event listener
-    return () => {
-      scrollButton?.removeEventListener("click", scrollToPage2);
-    };
-  }, []);
-
-  const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setMenuOpen((prev) => !prev);
-  };
+  const [isMenu, setIsMenu] = useState(false);
 
   return (
     <>
@@ -50,16 +23,9 @@ const Home: React.FC = () => {
       >
         <Socials />
       </div>
+      <div className="relative w-full pt-2 h-[85vh] bg-[#F1FAEE]" id="page1">
+        <NavBar />
 
-      <div className="relative h-[85vh] bg-[#F1FAEE]" id="page1">
-        <div
-          className={`w-[40%] fixed right-0 top-0 flex py-2 transition-all duration-300 ${
-            menuOpen ? "shadow-lg text-[#111827] " : "border-transparent "
-          } gap-10 items-center border justify-end pr-5 pl-2`}
-        >
-          <Menu isOpen={menuOpen} />
-          <MenuButton toggleMenu={toggleMenu} menuOpen={menuOpen} />
-        </div>
         <div className="flex">
           <div className="mt-14 ml-24">
             <div className="text-7xl font-bold text-[#37D299]">
@@ -89,14 +55,6 @@ const Home: React.FC = () => {
               a stimulating tech conference, I’m constantly pushing my limits
               and seeking new ways to grow both personally and professionally.
             </p>
-
-            {/* Button to Scroll to Page 2 */}
-            <button
-              id="scroll-button"
-              className="mt-6 px-6 py-2 bg-[#37D299] text-white rounded-lg"
-            >
-              Scroll to Projects
-            </button>
           </div>
           <div className="w-[105%] flex justify-center items-center">
             <div className="border-4 mt-[8rem] overflow-hidden shadow-black-xl">

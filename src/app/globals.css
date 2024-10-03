@@ -25,3 +25,87 @@ body {
     text-wrap: balance;
   }
 }
+
+.button {
+  box-sizing: border-box;
+  cursor: pointer;
+  z-index: 2;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.button svg {
+  stroke: #141414;
+  transition: 0.4s ease;
+}
+
+/* Shadow only on lines */
+.button svg g:first-child line,
+.button svg g:last-child line {
+  filter: url(#line-shadow); /* Apply shadow to lines */
+}
+
+.button svg g:first-child {
+  opacity: 1;
+  transition: opacity 0.2s ease-out 0.3s;
+}
+
+.button svg g:first-child line {
+  transition: transform 0.3s ease-out 0.3s;
+  transform: translateY(0px);
+}
+
+.button svg g:last-child {
+  opacity: 0;
+  transition: opacity 0.2s ease-out 0.3s;
+}
+
+.button svg g:last-child line {
+  transition: transform 0.3s ease;
+  transform: rotate(0deg);
+  transform-origin: center;
+}
+
+.button.-menu-open {
+  transform: scale(1.05);
+  box-shadow: none; /* Keep shadow off on the box */
+}
+
+.button.-menu-open svg {
+  stroke: #141414;
+}
+
+.button.-menu-open svg g:first-child {
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+}
+
+.button.-menu-open svg g:first-child line:first-child {
+  transform: translateY(7px);
+}
+
+.button.-menu-open svg g:first-child line:last-child {
+  transform: translateY(-7px);
+}
+
+.button.-menu-open svg g:last-child {
+  opacity: 1;
+  transition: opacity 0.2s ease-in;
+}
+
+.button.-menu-open svg g:last-child line:first-child {
+  transform: rotate(45deg);
+  transition: transform 0.3s ease-out 0.1s;
+}
+
+.button.-menu-open svg g:last-child line:last-child {
+  transform: rotate(-45deg);
+  transition: transform 0.3s ease-out 0.1s;
+}
+.menu-button {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.menu-button:hover {
+  transform: scale(1.1);
+}
