@@ -3,8 +3,32 @@ import Socials from "../../socials/socials";
 import Image from "next/image";
 import NavBar from "./NavBar";
 import Card from "./Card";
+import { useRef } from "react";
 
 const Home: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = (event: React.WheelEvent<HTMLDivElement>) => {
+    if (containerRef.current) {
+      const container = containerRef.current;
+
+      const isScrollable = container.scrollWidth > container.clientWidth;
+
+      if (isScrollable) {
+        event.preventDefault();
+        event.stopPropagation();
+
+        container.scrollLeft += event.deltaY;
+      }
+    }
+  };
+  const handleMouseEnter = () => {
+    document.body.style.overflow = "hidden"; // Disable vertical scrolling
+  };
+
+  const handleMouseLeave = () => {
+    document.body.style.overflow = "auto"; // Enable vertical scrolling
+  };
   return (
     <>
       {/* -------------------------- PAGE 1 ------------------------------- */}
@@ -73,7 +97,14 @@ const Home: React.FC = () => {
           <span className="text-[#D23770]">My</span>
           <span className="text-[#37D299]"> Projects</span>
         </div>
-        <div className="w-full flex gap-10 overflow-x-auto h-[90%]  mt-8 py-10 px-4">
+        <div
+          className=" flex gap-10 overflow-x-auto h-[90%]  mt-8 scrollbar-hide"
+          ref={containerRef}
+          onWheel={handleScroll}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          style={{ scrollBehavior: "smooth", pointerEvents: "auto" }}
+        >
           <Card projectDetails={projectDetails} src="" />
           <Card projectDetails={projectDetails} src="" />
           <Card projectDetails={projectDetails} src="" />

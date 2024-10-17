@@ -12,7 +12,7 @@ function Card({ projectDetails, src }: CardProps) {
   const handleMouseLeave = () => setIsHovered(false);
   return (
     <div
-      className="border-2 m-auto border-[#f1faee] relative rounded-3xl min-w-[23%] h-[75%] aspect-square  "
+      className=" border-2 m-auto border-[#f1faee] relative rounded-3xl min-w-[24%] h-[67%] aspect-square  "
       onMouseEnter={() => {
         handleMouseEnter();
       }}
@@ -46,7 +46,7 @@ function ProjectDetails({
 }: ProjectDetailsProps) {
   return (
     <>
-      <div className="px-2 py-2 bg-[#f1faee] flex flex-col w-full h-[35%] absolute bottom-0 rounded-b-2xl text-[#141414]">
+      <div className=" animate-slow-appear px-2 py-2 bg-[#f1faee] flex flex-col w-full h-[35%] absolute bottom-0 rounded-b-2xl text-[#141414]">
         {" "}
         <div className="mb-1 text-base">{title}fsdfsd</div>
         <div className="mb-1 text-sm flex-1">{description}fasdfasf</div>
