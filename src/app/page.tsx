@@ -2,6 +2,7 @@
 import Socials from "../../socials/socials";
 import Image from "next/image";
 import NavBar from "./NavBar";
+import Card from "./Card";
 
 const Home: React.FC = () => {
   return (
@@ -68,13 +69,24 @@ const Home: React.FC = () => {
 
       {/* -------------------------- PAGE 2 ------------------------------- */}
       <div className="h-screen py-20 px-20" id="page2">
-        <div className="text-2xl font-bold">
+        <div className="text-5xl font-bold">
           <span className="text-[#D23770]">My</span>
           <span className="text-[#37D299]"> Projects</span>
         </div>
-        <div className=""></div>
+        <div className="w-full flex gap-10 overflow-x-auto h-[90%]  mt-8 py-10 px-4">
+          <Card projectDetails={projectDetails} src="" />
+          <Card projectDetails={projectDetails} src="" />
+          <Card projectDetails={projectDetails} src="" />
+          <Card projectDetails={projectDetails} src="" />
+        </div>
       </div>
     </>
   );
 };
 export default Home;
+
+const projectDetails = {
+  title: "My Awesome Project",
+  description: "A brief description of the project.",
+  techStack: ["React.js", "Typescript", "Firebase", "Tailwind"],
+};
