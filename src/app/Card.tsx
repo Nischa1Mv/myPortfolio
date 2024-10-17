@@ -65,7 +65,7 @@ interface TechStackProps {
 }
 function TechStack({ tech }: TechStackProps) {
   return (
-    <div className="border-2 text-xs font-semibold px-1 rounded-lg border-[#141414] w-fit">
+    <div className="border-2 text-xs font-semibold px-1 rounded-lg shadow-[#979eaa] shadow-md border-[#141414] w-fit">
       {tech}
     </div>
   );

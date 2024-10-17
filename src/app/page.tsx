@@ -92,7 +92,7 @@ const Home: React.FC = () => {
       <div className="w-full h-[10vh]"></div>
 
       {/* -------------------------- PAGE 2 ------------------------------- */}
-      <div className="h-screen py-20 px-20" id="page2">
+      <div className="h-[90vh] py-20 px-20" id="page2">
         <div className="text-5xl font-bold">
           <span className="text-[#D23770]">My</span>
           <span className="text-[#37D299]"> Projects</span>
@@ -110,6 +110,54 @@ const Home: React.FC = () => {
           <Card projectDetails={projectDetails} src="" />
           <Card projectDetails={projectDetails} src="" />
         </div>
+      </div>
+      {/* -------------------------- PAGE 3 ------------------------------- */}
+      <div
+        className="h-screen py-20 px-20 bg-[#F1FAEE] w-full flex-col flex items-center"
+        id="page3"
+      >
+        {/* TITLE */}
+        <div className="relative inline-block mb-10 ">
+          <div className="text-5xl z-10 relative  font-bold text-[#37d299] flex justify-center items-center w-full ">
+            Get in Touch
+          </div>
+          <div className="bg-[#fde68a] absolute bottom-2 block w-full h-2 z-2"></div>
+        </div>
+        {/* some text */}
+        <div className=" text-center font-bold text-xl text-[#141414] mb-16  w-[30%]">
+          Got a question or proposal , or just want to say hello ? Go ahead
+        </div>
+        <form
+          action="submit"
+          className="w-full flex-col flex items-center justify-center "
+        >
+          <div className="flex  items-center justify-center w-full gap-40 mb-20">
+            <input
+              type="text"
+              placeholder="Enter Your Name"
+              className="shadow-[#979eaa] shadow-md focus:text-[#9ca3af] focus:placeholder:text-[#d6cc99] focus:bg-[#141414] focus:border-[#37d299] text-[#141414] font-bold border-[3px] py-4 px-4 text-xl rounded-lg bg-transparent w-[30%] border-[#141414]  placeholder:font-bold "
+            />
+
+            <input
+              className="shadow-[#979eaa] shadow-md focus:text-[#9ca3af] focus:placeholder:text-[#d6cc99] focus:bg-[#141414] focus:border-[#37d299] text-[#141414] font-bold border-[3px] px-4 py-4 text-xl rounded-lg bg-transparent  w-[30%] border-[#141414]  placeholder:font-bold "
+              type="email"
+              placeholder=" Enter Your Email"
+            />
+          </div>
+          <div className="w-full px-60 mb-20">
+            <input
+              className=" shadow-[0_4px_6px_0_rgba(151,158,170,0.5)]  focus:text-[#9ca3af] focus:bg-[#141414] focus:border-[#37d299] focus:rounded-lg focus:placeholder:text-[#d6cc99] text-[#141414] font-bold border-b-[3px] rounded-none w-full px-4 py-4 text-xl  bg-transparent   border-[#141414]  placeholder:font-bold "
+              type="text"
+              placeholder="Enter Your Message"
+            />
+          </div>
+          <button
+            type="submit"
+            className="shadow-[#979eaa] shadow-md hover:text-[#d6cc99] hover:bg-[#141414] hover:border-[#37d299] text-[#141414] font-bold border-[#141414] border-[3px] text-xl py-2 w-[25%] rounded-lg mt-4"
+          >
+            Say Hello
+          </button>
+        </form>
       </div>
     </>
   );

@@ -132,3 +132,6 @@ body {
 .animate-slow-appear {
   animation: slow-appear 0.5s forwards;
 }
+input:focus {
+  outline: none;
+}
