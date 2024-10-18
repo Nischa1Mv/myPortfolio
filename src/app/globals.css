@@ -135,3 +135,26 @@ body {
 input:focus {
   outline: none;
 }
+.group:hover .group-hover\:paused {
+  animation-play-state: paused;
+}
+.box-shadow {
+  box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
+}
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-scroll-left {
+  animation: scroll-left 20s linear infinite;
+}
+
+/* Pause animation on hover */
+.hover\:pause-animation:hover .animate-scroll-left {
+  animation-play-state: paused;
+}
