@@ -8,8 +8,8 @@ import Skill from "./skills";
 
 import react from "./svg/react.svg";
 import next from "./svg/next.svg";
-import tailwind from "./svg/tailwind.svg";
-import typescript from "./svg/typescript.svg";
+import tailwind from "./svg/Tailwind.svg";
+import typescript from "./svg/Typescript.svg";
 import Html5 from "./svg/HTML5.svg";
 import Css3 from "./svg/CSS3.svg";
 import Javascript from "./svg/Javascript.svg";
