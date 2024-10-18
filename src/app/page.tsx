@@ -4,6 +4,31 @@ import Image from "next/image";
 import NavBar from "./NavBar";
 import Card from "./Card";
 import { useRef } from "react";
+import Skill from "./skills";
+
+import react from "./svg/react.svg";
+import next from "./svg/next.svg";
+import tailwind from "./svg/tailwind.svg";
+import typescript from "./svg/typescript.svg";
+import Html5 from "./svg/html5.svg";
+import Css3 from "./svg/css3.svg";
+import Javascript from "./svg/javascript.svg";
+import Firebase from "./svg/firebase.svg";
+import Node from "./svg/NodeJs.svg";
+import Express from "./svg/express.svg";
+import MongoDB from "./svg/mongoDB.svg";
+import Postgres from "./svg/PostgressSQL.svg";
+import Python from "./svg/python.svg";
+import Django from "./svg/django.svg";
+import Cpp from "./svg/cpp.svg";
+import Java from "./svg/java.svg";
+import C from "./svg/c.svg";
+
+const projectDetails = {
+  title: "My Awesome Project",
+  description: "A brief description of the project.",
+  techStack: ["React.js", "Typescript", "Firebase", "Tailwind"],
+};
 
 const Home: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -92,13 +117,13 @@ const Home: React.FC = () => {
       <div className="w-full h-[10vh]"></div>
 
       {/* -------------------------- PAGE 2 ------------------------------- */}
-      <div className="h-[90vh] py-20 px-20" id="page2">
+      <div className="h-[100vh] py-20 px-20 " id="page2">
         <div className="text-5xl font-bold">
           <span className="text-[#D23770]">My</span>
           <span className="text-[#37D299]"> Projects</span>
         </div>
         <div
-          className=" flex gap-10 overflow-x-auto h-[90%]  mt-8 scrollbar-hide"
+          className=" flex gap-10 overflow-x-auto h-fit  mt-8 scrollbar-hide mb-10 py-4 px-4"
           ref={containerRef}
           onWheel={handleScroll}
           onMouseEnter={handleMouseEnter}
@@ -110,6 +135,58 @@ const Home: React.FC = () => {
           <Card projectDetails={projectDetails} src="" />
           <Card projectDetails={projectDetails} src="" />
         </div>
+
+        {/* First row */}
+        <div className="overflow-hidden whitespace-nowrap flex gap-10 hover:pause-animation mb-10">
+          <div className="flex animate-scroll-left  space-x-16">
+            <Skill src={react.src} label="React" />
+            <Skill src={next.src} label="Next.js" />
+            <Skill src={tailwind.src} label="Tailwind CSS" />
+            <Skill src={typescript.src} label="Typescript" />
+            <Skill src={Javascript.src} label="Javascript" />
+            <Skill src={Express.src} label="Express.js" />
+            <Skill src={Node.src} label="Node.js" />
+            <Skill src={Firebase.src} label="Firebase" />
+            <Skill src={Html5.src} label="HTML5" />
+          </div>
+          <div className="flex animate-scroll-left  space-x-16">
+            <Skill src={react.src} label="React" />
+            <Skill src={next.src} label="Next.js" />
+            <Skill src={tailwind.src} label="Tailwind CSS" />
+            <Skill src={typescript.src} label="Typescript" />
+            <Skill src={Javascript.src} label="Javascript" />
+            <Skill src={Express.src} label="Express.js" />
+            <Skill src={Node.src} label="Node.js" />
+            <Skill src={Firebase.src} label="Firebase" />
+            <Skill src={Html5.src} label="HTML5" />
+          </div>
+        </div>
+
+        {/* Second row */}
+        <div className="overflow-hidden flex whitespace-nowrap">
+          <div className="flex animate-scroll-left  space-x-16">
+            <Skill src={Css3.src} label="CSS3" />
+            <Skill src={MongoDB.src} label="MongoDB" />
+            <Skill src={Postgres.src} label="PostgreSQL" />
+            <Skill src={Django.src} label="Django" />
+            <Skill src={Python.src} label="Python" />
+            <Skill src={Cpp.src} label="C++" />
+            <Skill src={Java.src} label="Java" />
+            <Skill src={C.src} label="C" />
+          </div>
+          <div className="flex animate-scroll-left  space-x-16">
+            <Skill src={Css3.src} label="CSS3" />
+            <Skill src={MongoDB.src} label="MongoDB" />
+            <Skill src={Postgres.src} label="PostgreSQL" />
+            <Skill src={Django.src} label="Django" />
+            <Skill src={Python.src} label="Python" />
+            <Skill src={Cpp.src} label="C++" />
+            <Skill src={Java.src} label="Java" />
+            <Skill src={C.src} label="C" />
+          </div>
+        </div>
+
+        {/* end */}
       </div>
       {/* -------------------------- PAGE 3 ------------------------------- */}
       <div
@@ -163,9 +240,3 @@ const Home: React.FC = () => {
   );
 };
 export default Home;
-
-const projectDetails = {
-  title: "My Awesome Project",
-  description: "A brief description of the project.",
-  techStack: ["React.js", "Typescript", "Firebase", "Tailwind"],
-};
