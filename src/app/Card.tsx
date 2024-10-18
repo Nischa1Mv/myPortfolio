@@ -12,7 +12,7 @@ function Card({ projectDetails, src }: CardProps) {
   const handleMouseLeave = () => setIsHovered(false);
   return (
     <div
-      className=" border-2 m-auto border-[#f1faee] relative rounded-3xl min-w-[24%] h-[67%] aspect-square  "
+      className=" border-2 m-auto border-[#f1faee] relative rounded-3xl min-w-[24%] h-[67%] aspect-square box-shadow "
       onMouseEnter={() => {
         handleMouseEnter();
       }}
