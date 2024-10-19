@@ -93,7 +93,7 @@ const Home: React.FC = () => {
             className="rounded-full aspect-square"
             src="https://media.gq.com/photos/646baa821fa990bc7018e902/master/w_1920,c_limit/GQ0723_Gosling_01.jpg"
             alt="My_Image"
-            width={130}
+            width={190}
             height={100}
           />
         </div>
