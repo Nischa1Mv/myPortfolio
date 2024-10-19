@@ -1,5 +1,5 @@
 "use client";
-import Socials from "../../socials/socials";
+import Socials from "./socials";
 import Image from "next/image";
 import NavBar from "./NavBar";
 import Card from "./Card";
