@@ -1,10 +1,10 @@
 import React from "react";
-import NavBar from "../NavBar";
+import SmoothText from "@/components/TextEffects/SmoothText";
 
 function page() {
   return (
     <div>
-      <NavBar />
+      <SmoothText />
     </div>
   );
 }
