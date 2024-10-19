@@ -12,7 +12,7 @@ function Card({ projectDetails, src }: CardProps) {
   const handleMouseLeave = () => setIsHovered(false);
   return (
     <div
-      className=" border-2 m-auto border-[#f1faee] relative rounded-3xl min-w-[24%] h-[67%] aspect-square box-shadow hover:border-[#fde68a] "
+      className=" border-2 m-auto border-[#f1faee] relative rounded-3xl w-[60%] h-[60%]  lg:min-w-[24%] lg:h-[67%] aspect-square box-shadow hover:border-[#fde68a] "
       onMouseEnter={() => {
         handleMouseEnter();
       }}
@@ -46,11 +46,13 @@ function ProjectDetails({
 }: ProjectDetailsProps) {
   return (
     <>
-      <div className=" animate-slow-appear px-2 py-2 bg-[#f1faee] flex flex-col w-full h-[35%] absolute bottom-0 rounded-b-2xl  text-[#141414]">
+      <div className="animate-slow-appear px-2 py-2 bg-[#f1faee] lg:flex flex-col w-full lg:h-[35%] h-[40%] absolute bottom-0 rounded-b-2xl  text-[#141414]">
         {" "}
-        <div className="mb-1 text-base">{title}fsdfsd</div>
-        <div className="mb-1 text-sm flex-1">{description}fasdfasf</div>
-        <div className="flex gap-2">
+        <div className="mb-1 text-xs font-bold lg:text-base">{title}</div>
+        <div className="mb-1 text-[0.5rem] lg:text-sm flex-1">
+          {description}
+        </div>
+        <div className="flex lg:text-xs    gap-2">
           {techStack.map((tech, index) => (
             <TechStack key={index} tech={tech} />
           ))}
@@ -65,7 +67,7 @@ interface TechStackProps {
 }
 function TechStack({ tech }: TechStackProps) {
   return (
-    <div className="border-2 text-xs font-semibold px-1 rounded-lg shadow-[#979eaa] shadow-md border-[#141414] w-fit">
+    <div className="border-2 lg:flex hidden  lg:ml-0 ml-3 font-semibold px-1 rounded-lg shadow-[#979eaa] shadow-md border-[#141414] w-fit">
       {tech}
     </div>
   );

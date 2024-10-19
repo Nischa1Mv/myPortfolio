@@ -161,27 +161,71 @@ const Home: React.FC = () => {
       <div className="w-full h-[10vh]"></div>
 
       {/* -------------------------- PAGE 2 ------------------------------- */}
-      <div className="h-[100vh] py-20 px-20 " id="page2" ref={projectsRef}>
-        <div className="text-5xl font-bold">
+      <div
+        className="h-[100vh] lg:py-20  px-5 lg:px-20 "
+        id="page2"
+        ref={projectsRef}
+      >
+        <div className="lg:text-5xl text-2xl font-bold">
           <span className="text-[#D23770]">My</span>
           <span className="text-[#37D299]"> Projects</span>
         </div>
         <div
-          className=" flex gap-10 overflow-x-auto h-fit  mt-8 scrollbar-hide mb-10 py-4 px-4"
+          className=" flex lg:flex-row flex-col border border-opacity-20 border-white lg:border-none  gap-10 overflow-x-auto overflow-y-auto lg:h-fit h-[55%]   mt-8 mb-5 scrollbar-hide lg:mb-10 py-4 px-4"
           ref={containerRef}
           onWheel={handleScroll}
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
-          style={{ scrollBehavior: "smooth", pointerEvents: "auto" }}
+          style={{
+            scrollBehavior: "smooth",
+            pointerEvents: "auto",
+            // background: "rgba(255, 255, 255, 0.05)",
+            // boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+            borderRadius: "10px",
+          }}
         >
           <Card projectDetails={projectDetails} src="" />
           <Card projectDetails={projectDetails} src="" />
           <Card projectDetails={projectDetails} src="" />
           <Card projectDetails={projectDetails} src="" />
         </div>
+        {/* Mobile screen */}
+        <div className="flex lg:hidden justify-center items-center space-x-10 mb-2">
+          <div className="overflow-hidden whitespace-nowrap flex gap-10 hover:pause-animation  mb-10">
+            <div className="flex lg:flex-row flex-col lg:animate-scroll-left text-xs  lg:space-x-16">
+              <Skill src={react.src} label="React" />
+              <Skill src={next.src} label="Next.js" />
+              <Skill src={tailwind.src} label="Tailwind CSS" />
+              <Skill src={typescript.src} label="Typescript" />
+            </div>
+            <div className="flex flex-col">
+              {" "}
+              <Skill src={Javascript.src} label="Javascript" />
+              <Skill src={Express.src} label="Express.js" />
+              <Skill src={Node.src} label="Node.js" />
+              <Skill src={Firebase.src} label="Firebase" />
+            </div>
+          </div>
 
+          {/* Second row */}
+          <div className="overflow-hidden   whitespace-nowrap flex gap-10 hover:pause-animation mb-10">
+            <div className="flex lg:flex-row flex-col lg:animate-scroll-left text-xs  lg:space-x-16">
+              <Skill src={Css3.src} label="CSS3" />
+              <Skill src={MongoDB.src} label="MongoDB" />
+              <Skill src={Postgres.src} label="PostgreSQL" />
+              <Skill src={Django.src} label="Django" />
+            </div>
+            <div className="flex lg:flex-row flex-col lg:animate-scroll-left text-xs  lg:space-x-16">
+              <Skill src={Python.src} label="Python" />
+              <Skill src={Cpp.src} label="C++" />
+              <Skill src={Java.src} label="Java" />
+              <Skill src={C.src} label="C" />
+            </div>
+          </div>
+        </div>
+        {/* PC Screen */}
         {/* First row */}
-        <div className="overflow-hidden whitespace-nowrap flex gap-10 hover:pause-animation mb-10">
+        <div className="overflow-hidden whitespace-nowrap hidden lg:flex gap-10 hover:pause-animation mb-10">
           <div className="flex animate-scroll-left  space-x-16">
             <Skill src={react.src} label="React" />
             <Skill src={next.src} label="Next.js" />
@@ -207,7 +251,7 @@ const Home: React.FC = () => {
         </div>
 
         {/* Second row */}
-        <div className="overflow-hidden whitespace-nowrap flex gap-10 hover:pause-animation mb-10">
+        <div className="overflow-hidden whitespace-nowrap hidden lg:flex gap-10 hover:pause-animation mb-10">
           <div className="flex animate-scroll-left  space-x-16">
             <Skill src={Css3.src} label="CSS3" />
             <Skill src={MongoDB.src} label="MongoDB" />
