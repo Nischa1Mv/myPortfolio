@@ -81,7 +81,7 @@ const Home: React.FC = () => {
       </div>
 
       <div
-        className="relative w-full h-[85vh] bg-[#F1FAEE] pt-10 lg:pt-0 "
+        className="relative  h-[85vh] bg-[#F1FAEE] pt-10 lg:pt-0 "
         id="page1"
       >
         <div className=" lg:hidden overflow-hidden shadow-black-xl flex justify-center items-center rounded-full">
