@@ -58,7 +58,8 @@ const Home: React.FC = () => {
     <>
       {/* -------------------------- PAGE 1 ------------------------------- */}
       <div
-        className="fixed shadow-lg z-50 flex flex-col gap-5 top-44 left-0 border-2 px-4 py-4"
+        className="fixed shadow-lg z-50 flex flex-col gap-5 top-44 left-0 border-2 px-4 py-4
+        mix-blend-difference "
         style={{
           background: "rgba(255, 255, 255, 0.05)",
           boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",

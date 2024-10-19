@@ -7,7 +7,7 @@ function Socials() {
         xmlns="http://www.w3.org/2000/svg"
         width="30"
         height="30"
-        fill="#141414"
+        fill="#fff"
         className="bi bi-github cursor-pointer "
         viewBox="0 0 16 16"
       >
@@ -18,7 +18,7 @@ function Socials() {
         xmlns="http://www.w3.org/2000/svg"
         width="30"
         height="30"
-        fill="#141414"
+        fill="#fff"
         className="bi bi-linkedin cursor-pointer "
         viewBox="0 0 16 16"
       >
@@ -28,7 +28,7 @@ function Socials() {
         xmlns="http://www.w3.org/2000/svg"
         width="30"
         height="30"
-        fill="#141414"
+        fill="#fff"
         className="bi bi-twitter-x cursor-pointer"
         viewBox="0 0 16 16"
       >
@@ -38,7 +38,7 @@ function Socials() {
         xmlns="http://www.w3.org/2000/svg"
         width="30"
         height="30"
-        fill="#141414"
+        fill="#fff"
         className="bi bi-instagram cursor-pointer"
         viewBox="0 0 16 16"
       >
