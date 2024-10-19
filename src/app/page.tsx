@@ -163,7 +163,7 @@ const Home: React.FC = () => {
         </div>
 
         {/* Second row */}
-        <div className="overflow-hidden flex whitespace-nowrap">
+        <div className="overflow-hidden whitespace-nowrap flex gap-10 hover:pause-animation mb-10">
           <div className="flex animate-scroll-left  space-x-16">
             <Skill src={Css3.src} label="CSS3" />
             <Skill src={MongoDB.src} label="MongoDB" />
