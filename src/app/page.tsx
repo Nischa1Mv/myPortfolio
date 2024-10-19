@@ -234,48 +234,47 @@ const Home: React.FC = () => {
       </div>
       {/* -------------------------- PAGE 3 ------------------------------- */}
       <div
-        className="h-screen py-20 px-20 bg-[#F1FAEE] w-full flex-col flex items-center"
+        className="py-10   px-6 lg:py-20 lg:px-20 bg-[#F1FAEE] w-full flex-col flex items-center"
         id="page3"
         ref={contactRef}
       >
         {/* TITLE */}
         <div className="relative inline-block mb-10 ">
-          <div className="text-5xl z-10 relative  font-bold text-[#37d299] flex justify-center items-center w-full ">
+          <div className=" text-3xl lg:text-5xl z-10 relative  font-bold text-[#37d299] flex justify-center items-center w-full ">
             Get in Touch
           </div>
           <div className="bg-[#fde68a] absolute bottom-2 block w-full h-2 z-2"></div>
         </div>
         {/* some text */}
-        <div className=" text-center font-bold text-xl text-[#141414] mb-16  w-[30%]">
+        <div className=" text-center font-bold text-md lg:text-xl text-[#141414] mb-16 w-full  lg:w-[30%]">
           Got a question or proposal , or just want to say hello ? Go ahead
         </div>
         <form
           action="submit"
           className="w-full flex-col flex items-center justify-center "
         >
-          <div className="flex  items-center justify-center w-full gap-40 mb-20">
+          <div className="flex lg:flex-row   flex-col items-center justify-center w-full gap-10 mb-10 lg:gap-40 lg:mb-20">
             <input
               type="text"
               placeholder="Enter Your Name"
-              className="shadow-[#979eaa] shadow-md focus:text-[#9ca3af] focus:placeholder:text-[#d6cc99] focus:bg-[#141414] focus:border-[#37d299] text-[#141414] font-bold border-[3px] py-4 px-4 text-xl rounded-lg bg-transparent w-[30%] border-[#141414]  placeholder:font-bold "
+              className="shadow-[#979eaa] shadow-md focus:text-[#9ca3af] focus:placeholder:text-[#d6cc99] focus:bg-[#141414] focus:border-[#37d299] text-[#141414] font-bold border-[3px] py-4 px-4 text-xl rounded-lg bg-transparent lg:w-[30%] border-[#141414] placeholder:font-bold "
             />
 
             <input
-              className="shadow-[#979eaa] shadow-md focus:text-[#9ca3af] focus:placeholder:text-[#d6cc99] focus:bg-[#141414] focus:border-[#37d299] text-[#141414] font-bold border-[3px] px-4 py-4 text-xl rounded-lg bg-transparent  w-[30%] border-[#141414]  placeholder:font-bold "
+              className="shadow-[#979eaa] shadow-md focus:text-[#9ca3af] focus:placeholder:text-[#d6cc99] focus:bg-[#141414] focus:border-[#37d299] text-[#141414] font-bold border-[3px] px-4 py-4 text-xl rounded-lg bg-transparent  lg:w-[30%] border-[#141414]  placeholder:font-bold "
               type="email"
               placeholder=" Enter Your Email"
             />
           </div>
-          <div className="w-full px-60 mb-20">
-            <input
+          <div className="w-full lg:px-60 mb-20">
+            <textarea
               className=" shadow-[0_4px_6px_0_rgba(151,158,170,0.5)]  focus:text-[#9ca3af] focus:bg-[#141414] focus:border-[#37d299] focus:rounded-lg focus:placeholder:text-[#d6cc99] text-[#141414] font-bold border-b-[3px] rounded-none w-full px-4 py-4 text-xl  bg-transparent   border-[#141414]  placeholder:font-bold "
-              type="text"
               placeholder="Enter Your Message"
             />
           </div>
           <button
             type="submit"
-            className="shadow-[#979eaa] shadow-md hover:text-[#d6cc99] hover:bg-[#141414] hover:border-[#37d299] text-[#141414] font-bold border-[#141414] border-[3px] text-xl py-2 w-[25%] rounded-lg mt-4"
+            className="shadow-[#979eaa] shadow-md hover:text-[#d6cc99] hover:bg-[#141414] hover:border-[#37d299] text-[#141414] font-bold border-[#141414] border-[3px] lg:px-0 px-5 text-xl py-2 lg:w-[25%] rounded-lg mt-4"
           >
             Say Hello
           </button>
