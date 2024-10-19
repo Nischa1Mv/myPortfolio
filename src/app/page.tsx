@@ -80,10 +80,14 @@ const Home: React.FC = () => {
         <Socials />
       </div>
 
-      <div
-        className="relative  h-[85vh] bg-[#F1FAEE] pt-10 lg:pt-0 "
-        id="page1"
-      >
+      <div className="relative  h-[85vh] bg-[#F1FAEE]  lg:pt-0 " id="page1">
+        <div className="flex justify-end mb-8">
+          <NavBar
+            scrollToRef={scrollToRef}
+            contactRef={contactRef}
+            projectsRef={projectsRef}
+          />
+        </div>
         <div className=" lg:hidden overflow-hidden shadow-black-xl flex justify-center items-center rounded-full">
           <Image
             className="rounded-full aspect-square"
@@ -94,13 +98,6 @@ const Home: React.FC = () => {
           />
         </div>
 
-        <div className="hidden lg:flex justify-end">
-          <NavBar
-            scrollToRef={scrollToRef}
-            contactRef={contactRef}
-            projectsRef={projectsRef}
-          />
-        </div>
         <div className="flex mx-5">
           <div className=" mt-4  lg:mt-14 lg:ml-24">
             <div className="text-4xl w-fit text-nowrap  items-center justify-center lg:text-7xl font-bold flex gap-4 text-[#37D299]">
@@ -118,7 +115,7 @@ const Home: React.FC = () => {
               functionality.
             </p>
 
-            <p className="lg:block text-xs hidden mt-4 text-pretty lg:text-sm font-semibold text-[#111827]">
+            <p className="block text-xs  mt-4 text-pretty lg:text-sm font-semibold text-[#111827]">
               When I’m not immersed in coding, you’ll likely find me diving into
               the latest tech articles or exploring new frameworks. In my free
               time, I enjoy gaming and staying active at the gym, always

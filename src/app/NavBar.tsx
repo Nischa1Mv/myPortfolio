@@ -19,22 +19,22 @@ const NavBar: React.FC<NavBarProps> = ({
   return (
     <nav className="nav-text-bg flex py-1">
       {isMenu && (
-        <div className="menu-container flex text-lg text-[#111827] items-center px-4">
-          <div className="cursor-pointer nav-text px-4">Home</div>
+        <div className="menu-container flex text-lg text-[#111827] items-center  px-3 lg:px-4">
+          <div className="cursor-pointer nav-text px-2 lg:px-4">Home</div>
           <div
-            className="cursor-pointer nav-text px-4"
+            className="cursor-pointer nav-text px-2 lg:px-4"
             onClick={() => scrollToRef(projectsRef)}
           >
             Projects
           </div>
           <div
-            className="cursor-pointer nav-text px-4"
+            className="cursor-pointer nav-text px-2 lg:px-4"
             onClick={() => scrollToRef(contactRef)}
           >
             Contact Me
           </div>
           <div
-            className="cursor-pointer nav-text px-4"
+            className="cursor-pointer nav-text px-2 lg:px-4"
             onClick={handleDownloadPdf}
           >
             <a
