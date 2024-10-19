@@ -70,8 +70,10 @@ const Home: React.FC = () => {
       >
         <Socials />
       </div>
-      <div className="relative w-full pt-2 h-[85vh] bg-[#F1FAEE]" id="page1">
-        <NavBar />
+      <div className="relative w-full  h-[85vh] bg-[#F1FAEE]" id="page1">
+        <div className="flex justify-end">
+          <NavBar />
+        </div>
         <div className="flex">
           <div className="mt-14 ml-24">
             <div className="text-7xl font-bold text-[#37D299]">

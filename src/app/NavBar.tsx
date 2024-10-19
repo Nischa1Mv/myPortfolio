@@ -7,22 +7,30 @@ const NavBar: React.FC = () => {
   return (
     <>
       <div
-        className={` w-[40%] font-thin flex border-2 text-lg gap-4 px-4 fixed right-0  top-0 justify-end transition-all duration-300  ${
-          isMenu ? "shadow-lg" : ""
+        className={` font-thin flex text-lg gap-4 px-4 py-2 w-fit justify-end transition-all duration-300    ${
+          isMenu ? "nav-text-bg" : ""
         }`}
-        style={isMenu ? { boxShadow: "0 8px 16px rgba(0, 0, 0, 0.3)" } : {}}
       >
         {isMenu && (
-          <div className="flex text-[#111827]  items-center gap-4 justify-center w-full font-medium">
-            <div className="cursor-pointer border px-4">Home</div>
-            <div className="cursor-pointer border px-4">Projects</div>
-            <div className="cursor-pointer border px-4">Contact Me</div>
-            <div className="cursor-pointer border px-4">Resume</div>
+          <div className="flex text-[#111827] bg-transparent items-center gap-4 justify-center w-full font-medium">
+            <div className="cursor-pointer nav-text text-nowrap px-4">Home</div>
+            <div className="cursor-pointer nav-text text-nowrap px-4">
+              Projects
+            </div>
+            <div className="cursor-pointer nav-text text-nowrap px-4">
+              Contact Me
+            </div>
+            <div className="cursor-pointer nav-text text-nowrap px-4">
+              Resume
+            </div>
           </div>
         )}
         <div
           className={`button ${isMenu ? "-menu-open" : ""}`}
-          onClick={() => setIsMenu(!isMenu)}
+          onClick={(e) => {
+            e.stopPropagation();
+            setIsMenu(!isMenu);
+          }}
         >
           <svg
             width="48px"
