@@ -1,39 +1,67 @@
 "use client";
 import { useState } from "react";
 
-const NavBar: React.FC = () => {
+interface NavBarProps {
+  scrollToRef: (divRef: React.RefObject<HTMLDivElement>) => void;
+  projectsRef: React.RefObject<HTMLDivElement>;
+  contactRef: React.RefObject<HTMLDivElement>;
+}
+
+const NavBar: React.FC<NavBarProps> = ({
+  scrollToRef,
+  contactRef,
+  projectsRef,
+}) => {
   const [isMenu, setIsMenu] = useState(false);
 
+  const handleDownloadPdf = () => {};
+
   return (
-    <>
-      <div className="nav-text-bg flex py-1">
-        {isMenu && (
-          <div className="menu-container flex text-lg  text-[#111827] items-center px-4 ">
-            <div className="cursor-pointer nav-text px-4 nav-text ">Home</div>
-            <div className="cursor-pointer nav-text px-4 nav-text ">
-              Projects
-            </div>
-            <div className="cursor-pointer nav-text px-4 nav-text">
-              Contact Me
-            </div>
-            <div className="cursor-pointer nav-text  px-4 nav-text ">
-              Resume
-            </div>
+    <nav className="nav-text-bg flex py-1">
+      {isMenu && (
+        <div className="menu-container flex text-lg text-[#111827] items-center px-4">
+          <div className="cursor-pointer nav-text px-4">Home</div>
+          <div
+            className="cursor-pointer nav-text px-4"
+            onClick={() => scrollToRef(projectsRef)}
+          >
+            Projects
           </div>
-        )}
-        <div
-          className={`hamburger p-4 cursor-pointer flex  ${
-            isMenu ? "is-active" : ""
-          }`}
-          onClick={() => setIsMenu(!isMenu)}
-        >
-          <div className="hamburger__container">
-            <div className="hamburger__inner"></div>
-            <div className="hamburger__hidden"></div>
+          <div
+            className="cursor-pointer nav-text px-4"
+            onClick={() => scrollToRef(contactRef)}
+          >
+            Contact Me
+          </div>
+          <div
+            className="cursor-pointer nav-text px-4"
+            onClick={handleDownloadPdf}
+          >
+            <a
+              href={`./Resume.pdf`}
+              download
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
+            </a>
           </div>
         </div>
+      )}
+      <div
+        className={`hamburger p-4 cursor-pointer flex ${
+          isMenu ? "is-active" : ""
+        }`}
+        onClick={() => setIsMenu(!isMenu)}
+        aria-expanded={isMenu}
+        aria-controls="menu"
+      >
+        <div className="hamburger__container">
+          <div className="hamburger__inner"></div>
+          <div className="hamburger__hidden"></div>
+        </div>
       </div>
-    </>
+    </nav>
   );
 };
 

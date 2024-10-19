@@ -6,23 +6,23 @@ import Card from "./Card";
 import { useRef } from "react";
 import Skill from "./skills";
 
-import react from "./svg/react.svg";
-import next from "./svg/next.svg";
-import tailwind from "./svg/Tailwind.svg";
-import typescript from "./svg/Typescript.svg";
-import Html5 from "./svg/HTML5.svg";
-import Css3 from "./svg/CSS3.svg";
-import Javascript from "./svg/Javascript.svg";
-import Firebase from "./svg/firebase.svg";
-import Node from "./svg/NodeJs.svg";
-import Express from "./svg/express.svg";
-import MongoDB from "./svg/mongoDB.svg";
-import Postgres from "./svg/PostgressSQL.svg";
-import Python from "./svg/python.svg";
-import Django from "./svg/django.svg";
-import Cpp from "./svg/cpp.svg";
-import Java from "./svg/java.svg";
-import C from "./svg/c.svg";
+import react from "../../public/svg/react.svg";
+import next from "../../public/svg/next.svg";
+import tailwind from "../../public/svg/Tailwind.svg";
+import typescript from "../../public/svg/Typescript.svg";
+import Html5 from "../../public/svg/HTML5.svg";
+import Css3 from "../../public/svg/CSS3.svg";
+import Javascript from "../../public/svg/Javascript.svg";
+import Firebase from "../../public/svg/firebase.svg";
+import Node from "../../public/svg/NodeJs.svg";
+import Express from "../../public/svg/express.svg";
+import MongoDB from "../../public/svg/mongoDB.svg";
+import Postgres from "../../public/svg/PostgressSQL.svg";
+import Python from "../../public/svg/python.svg";
+import Django from "../../public/svg/django.svg";
+import Cpp from "../../public/svg/cpp.svg";
+import Java from "../../public/svg/java.svg";
+import C from "../../public/svg/c.svg";
 
 const projectDetails = {
   title: "My Awesome Project",
@@ -32,6 +32,14 @@ const projectDetails = {
 
 const Home: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement>(null);
+  const contactRef = useRef<HTMLDivElement>(null);
+
+  const scrollToRef = (divRef: React.RefObject<HTMLDivElement>) => {
+    if (divRef.current) {
+      divRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const handleScroll = (event: React.WheelEvent<HTMLDivElement>) => {
     if (containerRef.current) {
@@ -73,7 +81,11 @@ const Home: React.FC = () => {
       </div>
       <div className="relative w-full  h-[85vh] bg-[#F1FAEE]" id="page1">
         <div className="flex justify-end">
-          <NavBar />
+          <NavBar
+            scrollToRef={scrollToRef}
+            contactRef={contactRef}
+            projectsRef={projectsRef}
+          />
         </div>
         <div className="flex">
           <div className="mt-14 ml-24">
@@ -120,7 +132,7 @@ const Home: React.FC = () => {
       <div className="w-full h-[10vh]"></div>
 
       {/* -------------------------- PAGE 2 ------------------------------- */}
-      <div className="h-[100vh] py-20 px-20 " id="page2">
+      <div className="h-[100vh] py-20 px-20 " id="page2" ref={projectsRef}>
         <div className="text-5xl font-bold">
           <span className="text-[#D23770]">My</span>
           <span className="text-[#37D299]"> Projects</span>
@@ -195,6 +207,7 @@ const Home: React.FC = () => {
       <div
         className="h-screen py-20 px-20 bg-[#F1FAEE] w-full flex-col flex items-center"
         id="page3"
+        ref={contactRef}
       >
         {/* TITLE */}
         <div className="relative inline-block mb-10 ">
