@@ -118,7 +118,7 @@ const Home: React.FC = () => {
             </p>
           </div>
           <div className="w-[105%] flex justify-center items-center">
-            <div className="border-4 mt-[8rem] overflow-hidden shadow-black-xl">
+            <div className="border-4 mt-[4rem] overflow-hidden shadow-black-xl">
               <Image
                 src="https://media.gq.com/photos/646baa821fa990bc7018e902/master/w_1920,c_limit/GQ0723_Gosling_01.jpg"
                 alt="My_Image"
