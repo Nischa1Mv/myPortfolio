@@ -93,7 +93,7 @@ const Home: React.FC = () => {
             className="rounded-full aspect-square"
             src="https://media.gq.com/photos/646baa821fa990bc7018e902/master/w_1920,c_limit/GQ0723_Gosling_01.jpg"
             alt="My_Image"
-            width={100}
+            width={130}
             height={100}
           />
         </div>
@@ -130,7 +130,7 @@ const Home: React.FC = () => {
             </p>
           </div>
           <div className=" hidden lg:flex lg:w-[105%]   lg:justify-center lg:items-center">
-            <div className="border-4 mt-[4rem] overflow-hidden shadow-black-xl">
+            <div className="border-4  overflow-hidden shadow-black-xl">
               <Image
                 src="https://media.gq.com/photos/646baa821fa990bc7018e902/master/w_1920,c_limit/GQ0723_Gosling_01.jpg"
                 alt="My_Image"
@@ -155,11 +155,11 @@ const Home: React.FC = () => {
           <Socials />
         </div>
       </div>
-      <div className="w-full h-[10vh]"></div>
+      <div className="w-full hidden lg:flex h-[10vh]"></div>
 
       {/* -------------------------- PAGE 2 ------------------------------- */}
       <div
-        className="h-[100vh] lg:py-20  px-5 lg:px-20 "
+        className="h-[100vh] pt-7 lg:pt-0 lg:py-20  px-5 lg:px-20 "
         id="page2"
         ref={projectsRef}
       >
@@ -187,15 +187,18 @@ const Home: React.FC = () => {
           <Card projectDetails={projectDetails} src="" />
         </div>
         {/* Mobile screen */}
-        <div className="flex lg:hidden justify-center items-center space-x-10 mb-2">
-          <div className="overflow-hidden whitespace-nowrap flex gap-10 hover:pause-animation  mb-10">
-            <div className="flex lg:flex-row flex-col lg:animate-scroll-left text-xs  lg:space-x-16">
+        <div className="text-xl mx-6 my-6 font-bold lg:hidden flex">
+          My Skills
+        </div>
+        <div className="flex lg:hidden justify-center items-center space-x-10 mb-2  ">
+          <div className="overflow-hidden whitespace-nowrap flex gap-10 hover:pause-animation   mb-10">
+            <div className="flex lg:flex-row flex-col lg:animate-scroll-left lg:space-x-16">
               <Skill src={react.src} label="React" />
               <Skill src={next.src} label="Next.js" />
               <Skill src={tailwind.src} label="Tailwind CSS" />
               <Skill src={typescript.src} label="Typescript" />
             </div>
-            <div className="flex flex-col">
+            <div className="flex lg:flex-row flex-col lg:animate-scroll-left lg:space-x-16">
               {" "}
               <Skill src={Javascript.src} label="Javascript" />
               <Skill src={Express.src} label="Express.js" />
@@ -206,13 +209,13 @@ const Home: React.FC = () => {
 
           {/* Second row */}
           <div className="overflow-hidden   whitespace-nowrap flex gap-10 hover:pause-animation mb-10">
-            <div className="flex lg:flex-row flex-col lg:animate-scroll-left text-xs  lg:space-x-16">
+            <div className="flex lg:flex-row flex-col lg:animate-scroll-left lg:space-x-16">
               <Skill src={Css3.src} label="CSS3" />
               <Skill src={MongoDB.src} label="MongoDB" />
               <Skill src={Postgres.src} label="PostgreSQL" />
               <Skill src={Django.src} label="Django" />
             </div>
-            <div className="flex lg:flex-row flex-col lg:animate-scroll-left text-xs  lg:space-x-16">
+            <div className="flex lg:flex-row flex-col lg:animate-scroll-left  lg:space-x-16">
               <Skill src={Python.src} label="Python" />
               <Skill src={Cpp.src} label="C++" />
               <Skill src={Java.src} label="Java" />
@@ -307,7 +310,7 @@ const Home: React.FC = () => {
               placeholder=" Enter Your Email"
             />
           </div>
-          <div className="w-full lg:px-60 mb-20">
+          <div className="w-full lg:px-60 lg:mb-20 my-5">
             <textarea
               className=" shadow-[0_4px_6px_0_rgba(151,158,170,0.5)]  focus:text-[#9ca3af] focus:bg-[#141414] focus:border-[#37d299] focus:rounded-lg focus:placeholder:text-[#d6cc99] text-[#141414] font-bold border-b-[3px] rounded-none w-full px-4 py-4 text-xl  bg-transparent   border-[#141414]  placeholder:font-bold "
               placeholder="Enter Your Message"

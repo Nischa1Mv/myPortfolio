@@ -17,12 +17,12 @@ const NavBar: React.FC<NavBarProps> = ({
   const handleDownloadPdf = () => {};
 
   return (
-    <nav className="nav-text-bg flex py-1">
+    <nav className="nav-text-bg flex py-1 lg:w-fit w-full lg:justify-normal justify-end ">
       {isMenu && (
-        <div className="menu-container flex text-lg text-[#111827] items-center  px-3 lg:px-4">
+        <div className="menu-container flex text-lg text-[#111827] items-center  w-full  lg:px-4">
           <div className="cursor-pointer nav-text px-2 lg:px-4">Home</div>
           <div
-            className="cursor-pointer nav-text px-2 lg:px-4"
+            className="cursor-pointer nav-text  lg:px-4"
             onClick={() => scrollToRef(projectsRef)}
           >
             Projects
@@ -34,7 +34,7 @@ const NavBar: React.FC<NavBarProps> = ({
             Contact Me
           </div>
           <div
-            className="cursor-pointer nav-text px-2 lg:px-4"
+            className="cursor-pointer nav-text pr-2 lg:px-4"
             onClick={handleDownloadPdf}
           >
             <a
