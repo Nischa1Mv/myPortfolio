@@ -19,7 +19,7 @@ const NavBar: React.FC<NavBarProps> = ({
   return (
     <nav className="nav-text-bg flex py-1 lg:w-fit w-full lg:justify-normal justify-end  ">
       {isMenu && (
-        <div className="menu-container flex text-lg text-[#111827] items-center lg:justify-normal justify-between  w-full  lg:px-4">
+        <div className="menu-container flex text-sm lg:text-lg text-[#111827] items-center lg:justify-normal justify-between  w-full  lg:px-4">
           <div className="cursor-pointer nav-text px-2 lg:px-4">Home</div>
           <div
             className="cursor-pointer nav-text  lg:px-4"
