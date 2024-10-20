@@ -1,3 +1,25 @@
+# My Portfolio
+
+Welcome to my personal portfolio website built with [Next.js](https://nextjs.org/). This website showcases my projects, skills, and experiences. Feel free to explore and reach out if you'd like to collaborate!
+
+<!--![Portfolio Screenshot](link_to_screenshot)  Add your portfolio screenshot here -->
+
+## Features
+
+- **Responsive Design**: Mobile-first design, ensuring a great user experience on any device.
+- **Dynamic Project Showcase**: Fetches data dynamically to display my latest projects.
+- **SEO Optimized**: Integrated Next.js SEO strategies for better search engine ranking.
+- **Fast and Scalable**: Utilizes the full power of Next.js for server-side rendering (SSR) and static site generation (SSG).
+- **Smooth Animations**: Enhanced user experience with smooth page transitions and animations.
+
+## Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Forms**: [Formik](https://formik.org/) & [Yup](https://github.com/jquense/yup) for form validation
+- **Deployment**: [Vercel](https://vercel.com/)
+- **Other Tools**: React Hooks, [Framer Motion](https://www.framer.com/motion/) for animations
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
