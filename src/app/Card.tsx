@@ -52,7 +52,7 @@ function ProjectDetails({
         <div className="mb-1 text-[0.5rem] lg:text-sm flex-1">
           {description}
         </div>
-        <div className="flex lg:text-xs    gap-2">
+        <div className="lg:flex inline-flex  lg:text-xs  text-[0.5rem]  gap-1 lg:gap-2">
           {techStack.map((tech, index) => (
             <TechStack key={index} tech={tech} />
           ))}
@@ -67,7 +67,7 @@ interface TechStackProps {
 }
 function TechStack({ tech }: TechStackProps) {
   return (
-    <div className="border-2 lg:flex hidden  lg:ml-0 ml-3 font-semibold px-1 rounded-lg shadow-[#979eaa] shadow-md border-[#141414] w-fit">
+    <div className="border-2 lg:flex font-semibold px-1 rounded-lg shadow-[#979eaa] shadow-md border-[#141414] w-fit">
       {tech}
     </div>
   );

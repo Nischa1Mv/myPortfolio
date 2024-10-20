@@ -187,9 +187,13 @@ const Home: React.FC = () => {
           <Card projectDetails={projectDetails} src="" />
         </div>
         {/* Mobile screen */}
-        <div className="text-xl mx-6 my-6 font-bold lg:hidden flex">
-          My Skills
+        <div className="lg:hidden flex  text-2xl gap-2 mb-4  font-bold">
+          <span className="text-[#D23770]">My</span>
+          <span className="text-[#37D299]"> Skills</span>
         </div>
+        {/* <div className="text-xl mx-6 my-6 font-bold lg:hidden flex">
+          My Skills
+        </div> */}
         <div className="flex lg:hidden justify-center items-center space-x-10 mb-2  ">
           <div className="overflow-hidden whitespace-nowrap flex gap-10 hover:pause-animation   mb-10">
             <div className="flex lg:flex-row flex-col lg:animate-scroll-left lg:space-x-16">
@@ -290,8 +294,8 @@ const Home: React.FC = () => {
           <div className="bg-[#fde68a] absolute bottom-2 block w-full h-2 z-2"></div>
         </div>
         {/* some text */}
-        <div className=" text-center font-bold text-md lg:text-xl text-[#141414] mb-16 w-full  lg:w-[30%]">
-          Got a question or proposal , or just want to say hello ? Go ahead
+        <div className=" text-center font-bold text-md lg:text-xl text-[#141414] mb-10 lg:mb-16 w-[80%] border  lg:w-[30%]">
+          Got a question or proposal ,or just want to say hello ? Go ahead
         </div>
         <form
           action="submit"
