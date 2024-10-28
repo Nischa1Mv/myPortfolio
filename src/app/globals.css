@@ -315,3 +315,7 @@ input:focus {
   transform: scaleX(1);
   transform-origin: left;
 }
+
+::-webkit-scrollbar {
+  display: none; 
+}
