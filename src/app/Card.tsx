@@ -1,19 +1,18 @@
 import Image from "next/image";
-import Link from 'next/link';
+import Link from "next/link";
 import { useState } from "react";
 
 interface CardProps {
   projectDetails: ProjectDetailsProps;
   src: string;
-  link:string;
+  link: string;
 }
 
-function Card({ projectDetails, src , link }: CardProps) {
+function Card({ projectDetails, src, link }: CardProps) {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
   return (
-  
     <div
       className=" cursor-pointer border-2 m-auto border-[#f1faee] relative rounded-3xl w-[60%] h-[60%]  lg:min-w-[24%] lg:h-[67%] aspect-square box-shadow hover:border-[#fde68a] "
       onMouseEnter={() => {
@@ -22,12 +21,18 @@ function Card({ projectDetails, src , link }: CardProps) {
       onMouseLeave={() => {
         handleMouseLeave();
       }}
-    >  
-<Link href={link} passHref legacyBehavior>
-  <a target="_blank" rel="noopener noreferrer">
-    <Image src={src} width={500} height={500} alt="Project Image" />
-  </a>
-</Link>
+    >
+      <Link href={link} passHref legacyBehavior>
+        <a target="_blank" rel="noopener noreferrer">
+          <Image
+            className="rounded-3xl"
+            src={src}
+            alt="Project Image"
+            layout="fill" // Make the image fill its parent container
+            objectFit="cover" // Cover the container while maintaining aspect ratio
+          />
+        </a>
+      </Link>
       {isHovered && (
         <ProjectDetails
           title={projectDetails.title}
@@ -68,6 +73,7 @@ function ProjectDetails({
     </>
   );
 }
+export { ProjectDetails };
 
 interface TechStackProps {
   tech: string;

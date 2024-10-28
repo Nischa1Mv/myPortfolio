@@ -2,7 +2,7 @@
 import Socials from "./socials";
 import Image from "next/image";
 import NavBar from "./NavBar";
-import Card from "./Card";
+import Card, { ProjectDetails } from "./Card";
 import { useRef } from "react";
 import Skill from "./skills";
 
@@ -24,9 +24,12 @@ import Cpp from "../../public/svg/cpp.svg";
 import Java from "../../public/svg/java.svg";
 import C from "../../public/svg/c.svg";
 
+import Zealliance from "../../public/images/Zealliance.png";
+
 const projectDetails = {
   title: "Zealliance",
-  description: "An all-in-one Fitness app one will ever need, it done calculating BMI, get your calories intake by Logging foods, provides steps + video for various types of exercises, also lets you to log your workout regime",
+  description:
+    "An all-in-one Fitness app one will ever need, it done calculating BMI, get your calories intake by Logging foods, provides steps + video for various types of exercises, also lets you to log your workout regime",
   techStack: ["React.js", "Typescript", "Firebase", "Tailwind"],
 };
 
@@ -181,10 +184,23 @@ const Home: React.FC = () => {
             borderRadius: "10px",
           }}
         >
-          <Card projectDetails={projectDetails} src="" link="https://github.com/Nischa1Mv/Zealliance-MiniP" />
-          <Card projectDetails={projectDetails} src="" link="https://github.com/Nischa1Mv/passwordManager"/>
-          <Card projectDetails={projectDetails} src="" link="https://github.com/Nischa1Mv/UrlShortener"/>
-          <Card projectDetails={projectDetails} src="" link=""/>
+          <Card
+            projectDetails={projectDetails}
+            src={Zealliance.src}
+            link="https://github.com/Nischa1Mv/Zealliance-MiniP"
+          />
+
+          <Card
+            projectDetails={projectDetails}
+            src=""
+            link="https://github.com/Nischa1Mv/passwordManager"
+          />
+          <Card
+            projectDetails={projectDetails}
+            src=""
+            link="https://github.com/Nischa1Mv/UrlShortener"
+          />
+          <Card projectDetails={projectDetails} src="" link="" />
         </div>
         {/* Mobile screen */}
         <div className="lg:hidden flex  text-2xl gap-2 mb-4  font-bold">
