@@ -28,8 +28,7 @@ import Zealliance from "../../public/images/Zealliance.png";
 
 const projectDetails = {
   title: "Zealliance",
-  description:
-    "An all-in-one Fitness app one will ever need, it done calculating BMI, get your calories intake by Logging foods, provides steps + video for various types of exercises, also lets you to log your workout regime",
+  description: "An all-in-one Fitness app one will ever need",
   techStack: ["React.js", "Typescript", "Firebase", "Tailwind"],
 };
 
