@@ -25,8 +25,8 @@ import Java from "../../public/svg/java.svg";
 import C from "../../public/svg/c.svg";
 
 const projectDetails = {
-  title: "My Awesome Project",
-  description: "A brief description of the project.",
+  title: "Zealliance",
+  description: "An all-in-one Fitness app one will ever need, it done calculating BMI, get your calories intake by Logging foods, provides steps + video for various types of exercises, also lets you to log your workout regime",
   techStack: ["React.js", "Typescript", "Firebase", "Tailwind"],
 };
 
@@ -181,10 +181,10 @@ const Home: React.FC = () => {
             borderRadius: "10px",
           }}
         >
-          <Card projectDetails={projectDetails} src="" />
-          <Card projectDetails={projectDetails} src="" />
-          <Card projectDetails={projectDetails} src="" />
-          <Card projectDetails={projectDetails} src="" />
+          <Card projectDetails={projectDetails} src="" link="https://github.com/Nischa1Mv/Zealliance-MiniP" />
+          <Card projectDetails={projectDetails} src="" link="https://github.com/Nischa1Mv/passwordManager"/>
+          <Card projectDetails={projectDetails} src="" link="https://github.com/Nischa1Mv/UrlShortener"/>
+          <Card projectDetails={projectDetails} src="" link=""/>
         </div>
         {/* Mobile screen */}
         <div className="lg:hidden flex  text-2xl gap-2 mb-4  font-bold">
@@ -294,7 +294,7 @@ const Home: React.FC = () => {
           <div className="bg-[#fde68a] absolute bottom-2 block w-full h-2 z-2"></div>
         </div>
         {/* some text */}
-        <div className=" text-center font-bold text-md lg:text-xl text-[#141414] mb-10 lg:mb-16 w-[80%] border  lg:w-[30%]">
+        <div className=" text-center font-bold text-md lg:text-xl text-[#141414] mb-10 lg:mb-16 w-[80%] lg:w-[30%]">
           Got a question or proposal ,or just want to say hello ? Go ahead
         </div>
         <form
