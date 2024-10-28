@@ -64,7 +64,7 @@ function ProjectDetails({
         <div className=" text-[0.4rem] lg:text-[0.6rem] flex-1 font-bold">
           {description}
         </div>
-        <div className="lg:flex inline-flex flex justify-center items-center lg:text-[0.7rem]  text-[0.4rem]  gap-1 lg:gap-1 ">
+        <div className="lg:flex  flex justify-center items-center lg:text-[0.7rem]  text-[0.4rem]  gap-1 lg:gap-1 ">
           {techStack.map((tech, index) => (
             <TechStack key={index} tech={tech} />
           ))}

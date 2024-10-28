@@ -2,7 +2,7 @@
 import Socials from "./socials";
 import Image from "next/image";
 import NavBar from "./NavBar";
-import Card, { ProjectDetails } from "./Card";
+import Card from "./Card";
 import { useRef } from "react";
 import Skill from "./skills";
 
