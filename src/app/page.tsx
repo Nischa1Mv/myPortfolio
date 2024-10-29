@@ -2,7 +2,7 @@
 import Socials from "./socials";
 import Image from "next/image";
 import NavBar from "./NavBar";
-import Card from "./Card";
+import Card, { ProjectDetails } from "./Card";
 import { useRef } from "react";
 import Skill from "./skills";
 
@@ -188,7 +188,7 @@ const Home: React.FC = () => {
           <span className="text-[#37D299]"> Projects</span>
         </div>
         <div
-          className=" flex lg:flex-row flex-col border border-opacity-20 border-white lg:border-none   gap-10 overflow-x-auto overflow-y-auto lg:h-fit h-[55%] lg:w-full  w-[60%] m-auto   mt-8 mb-5 scrollbar-hide lg:mb-10 py-4 px-4 "
+          className=" flex lg:flex-row flex-col border border-opacity-20 border-white lg:border-none  xl:gap-10 overflow-x-auto overflow-y-auto lg:h-fit h-[55%]   mt-8 mb-5 scrollbar-hide lg:mb-10 py-4 px-4"
           ref={containerRef}
           onWheel={handleScroll}
           onMouseEnter={handleMouseEnter}
@@ -202,14 +202,34 @@ const Home: React.FC = () => {
           }}
         >
           {projectDetails.map((project, index) => (
-            <Card
-              key={index}
-              title={project.title}
-              description={project.description}
-              techStack={project.techStack}
-              src={project.Src}
-              link={project.link}
-            />
+            <>
+              <Card
+                key={index}
+                title={project.title}
+                description={project.description}
+                techStack={project.techStack}
+                src={project.Src}
+                link={project.link}
+              />
+              <div className="lg:hidden  mt-4 mb-10 flex flex-col justify-center items-start gap-1 ">
+                <h1 className="font-extrabold text-xl ">
+                  <a href={project.link} target="_blank">
+                    {project.title}
+                  </a>
+                </h1>
+                <div className="font-medium text-md">{project.description}</div>
+                <div className="font-medium text-xs flex gap-2 ">
+                  {project.techStack.map((techStack, index) => (
+                    <div
+                      className="rounded-xl border-2 px-2 hover:bg-white hover:text-black"
+                      key={index}
+                    >
+                      {techStack}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
           ))}
         </div>
         {/* Mobile screen */}

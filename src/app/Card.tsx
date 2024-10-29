@@ -28,7 +28,7 @@ function Card({ title, description, techStack, src, link }: CardProps) {
 
   return (
     <div
-      className=" cursor-pointer border-2 m-auto border-[#f1faee] relative rounded-3xl w-full h-[60%]  lg:min-w-[24%] lg:h-[67%] aspect-square box-shadow hover:border-[#fde68a] "
+      className=" cursor-pointer border-2 border-[#f1faee] relative rounded-3xl w-full h-[60%]  lg:min-w-[24%] lg:h-[67%] aspect-square hover:border-[#fde68a] "
       onMouseEnter={() => {
         handleMouseEnter();
       }}
@@ -72,7 +72,7 @@ function ProjectDetails({
 }: ProjectDetailsProps) {
   return (
     <>
-      <div className="animate-slow-appear px-2 py-2 bg-[#f1faee] lg:flex flex-col w-full lg:h-[30%] h-[40%] absolute bottom-0 rounded-b-2xl  text-[#141414]">
+      <div className="animate-slow-appear px-2 py-2 bg-[#f1faee] lg:flex flex-col w-full lg:h-[30%] h-[40%]  absolute bottom-0 rounded-b-2xl  text-[#141414]">
         {" "}
         <div className="text-xs font-bold lg:text-base">{title}</div>
         <div className=" text-[0.4rem] flex grow lg:text-[0.7rem] flex-1 font-bold">
