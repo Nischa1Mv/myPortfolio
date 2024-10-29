@@ -187,7 +187,7 @@ const Home: React.FC = () => {
           <span className="text-[#37D299]"> Projects</span>
         </div>
         <div
-          className=" flex lg:flex-row flex-col border border-opacity-20 border-white lg:border-none  gap-10 overflow-x-auto overflow-y-auto lg:h-fit h-[55%]   mt-8 mb-5 scrollbar-hide lg:mb-10 py-4 px-4"
+          className=" flex lg:flex-row flex-col border border-opacity-20 border-white lg:border-none   gap-10 overflow-x-auto overflow-y-auto lg:h-fit h-[55%] lg:w-full  w-[60%] m-auto   mt-8 mb-5 scrollbar-hide lg:mb-10 py-4 px-4 "
           ref={containerRef}
           onWheel={handleScroll}
           onMouseEnter={handleMouseEnter}

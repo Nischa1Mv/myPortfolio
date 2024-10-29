@@ -28,7 +28,7 @@ function Card({ title, description, techStack, src, link }: CardProps) {
 
   return (
     <div
-      className=" cursor-pointer border-2 m-auto border-[#f1faee] relative rounded-3xl w-[60%] h-[60%]  lg:min-w-[24%] lg:h-[67%] aspect-square box-shadow hover:border-[#fde68a] "
+      className=" cursor-pointer border-2 m-auto border-[#f1faee] relative rounded-3xl w-full h-[60%]  lg:min-w-[24%] lg:h-[67%] aspect-square box-shadow hover:border-[#fde68a] "
       onMouseEnter={() => {
         handleMouseEnter();
       }}
