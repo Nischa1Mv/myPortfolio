@@ -24,13 +24,29 @@ import Cpp from "../../public/svg/cpp.svg";
 import Java from "../../public/svg/java.svg";
 import C from "../../public/svg/c.svg";
 
-import Zealliance from "../../public/images/Zealliance.png";
-
-const projectDetails = {
-  title: "Zealliance",
-  description: "An all-in-one Fitness app one will ever need",
-  techStack: ["React.js", "Typescript", "Firebase", "Tailwind"],
-};
+const projectDetails = [
+  {
+    title: "Zealliance",
+    description: "An all-in-one Fitness app one will ever need",
+    techStack: ["React.js", "Typescript", "Firebase", "Tailwind"],
+    link: "https://github.com/Nischa1Mv/Zealliance-MiniP",
+    Src: "/images/zealliance.png",
+  },
+  {
+    title: "Password Manager",
+    description: "Manage all your passwords of all Platforms in one place",
+    techStack: ["React.js", "Javascript", "Firebase", "Tailwind"],
+    link: "https://github.com/Nischa1Mv/passwordManager",
+    Src: "",
+  },
+  {
+    title: "URL Shortener",
+    description: "Shorten your long URL's to a short one",
+    techStack: ["React.js", "Javascript", "Firebase", "Tailwind"],
+    link: "https://github.com/Nischa1Mv/UrlShortener",
+    Src: "",
+  },
+];
 
 const Home: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -183,23 +199,16 @@ const Home: React.FC = () => {
             borderRadius: "10px",
           }}
         >
-          <Card
-            projectDetails={projectDetails}
-            src={Zealliance.src}
-            link="https://github.com/Nischa1Mv/Zealliance-MiniP"
-          />
-
-          <Card
-            projectDetails={projectDetails}
-            src=""
-            link="https://github.com/Nischa1Mv/passwordManager"
-          />
-          <Card
-            projectDetails={projectDetails}
-            src=""
-            link="https://github.com/Nischa1Mv/UrlShortener"
-          />
-          <Card projectDetails={projectDetails} src="" link="" />
+          {projectDetails.map((project, index) => (
+            <Card
+              key={index}
+              title={project.title}
+              description={project.description}
+              techStack={project.techStack}
+              src={project.Src}
+              link={project.link}
+            />
+          ))}
         </div>
         {/* Mobile screen */}
         <div className="lg:hidden flex  text-2xl gap-2 mb-4  font-bold">

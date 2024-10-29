@@ -1,14 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { StaticImageData } from "next/image";
 import { useState } from "react";
 
 interface CardProps {
-  projectDetails: ProjectDetailsProps;
-  src: string;
+  title: string;
+  description: string;
+  techStack: string[];
+  src: string | StaticImageData;
   link: string;
 }
 
-function Card({ projectDetails, src, link }: CardProps) {
+function Card({
+  title,
+  description,
+  techStack,
+  src = "defaultImage.png",
+  link,
+}: CardProps) {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
@@ -26,7 +35,7 @@ function Card({ projectDetails, src, link }: CardProps) {
         <a target="_blank" rel="noopener noreferrer">
           <Image
             className="rounded-3xl"
-            src={src}
+            src={typeof src === "string" ? src : src}
             alt="Project Image"
             layout="fill" // Make the image fill its parent container
             objectFit="cover" // Cover the container while maintaining aspect ratio
@@ -35,9 +44,9 @@ function Card({ projectDetails, src, link }: CardProps) {
       </Link>
       {isHovered && (
         <ProjectDetails
-          title={projectDetails.title}
-          description={projectDetails.description}
-          techStack={projectDetails.techStack}
+          title={title}
+          description={description}
+          techStack={techStack}
         />
       )}
     </div>
@@ -58,13 +67,13 @@ function ProjectDetails({
 }: ProjectDetailsProps) {
   return (
     <>
-      <div className="animate-slow-appear px-2 py-2 bg-[#f1faee] lg:flex flex-col w-full lg:h-[35%] h-[40%] absolute bottom-0 rounded-b-2xl  text-[#141414]">
+      <div className="animate-slow-appear px-2 py-2 bg-[#f1faee] lg:flex flex-col w-full lg:h-[30%] h-[40%] absolute bottom-0 rounded-b-2xl  text-[#141414]">
         {" "}
         <div className="text-xs font-bold lg:text-base">{title}</div>
-        <div className=" text-[0.4rem] lg:text-[0.6rem] flex-1 font-bold">
+        <div className=" text-[0.4rem] flex lg:text-[0.7rem] flex-1 font-bold">
           {description}
         </div>
-        <div className="lg:flex  flex justify-center items-center lg:text-[0.7rem]  text-[0.4rem]  gap-1 lg:gap-1 ">
+        <div className="lg:flex   flex justify-center items-center lg:text-[0.7rem]  text-[0.4rem]  gap-1 lg:gap-1 ">
           {techStack.map((tech, index) => (
             <TechStack key={index} tech={tech} />
           ))}
