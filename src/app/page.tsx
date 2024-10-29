@@ -23,7 +23,8 @@ import Django from "../../public/svg/django.svg";
 import Cpp from "../../public/svg/cpp.svg";
 import Java from "../../public/svg/java.svg";
 import C from "../../public/svg/c.svg";
-import Zealliance from "../../public/images/zealliance.png";
+
+import Zealliance from "../../public/images/Zealliance.png";
 
 const projectDetails = [
   {
