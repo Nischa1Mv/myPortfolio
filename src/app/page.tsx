@@ -23,6 +23,7 @@ import Django from "../../public/svg/django.svg";
 import Cpp from "../../public/svg/cpp.svg";
 import Java from "../../public/svg/java.svg";
 import C from "../../public/svg/c.svg";
+import Zealliance from "../../public/images/zealliance.png";
 
 const projectDetails = [
   {
@@ -30,7 +31,7 @@ const projectDetails = [
     description: "An all-in-one Fitness app one will ever need",
     techStack: ["React.js", "Typescript", "Firebase", "Tailwind"],
     link: "https://github.com/Nischa1Mv/Zealliance-MiniP",
-    Src: "/images/zealliance.png",
+    Src: { Zealliance },
   },
   {
     title: "Password Manager",

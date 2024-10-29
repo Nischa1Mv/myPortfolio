@@ -7,20 +7,25 @@ interface CardProps {
   title: string;
   description: string;
   techStack: string[];
-  src: string | StaticImageData;
+  src: string | StaticImageData | { Zealliance: StaticImageData };
   link: string;
 }
 
-function Card({
-  title,
-  description,
-  techStack,
-  src = "defaultImage.png",
-  link,
-}: CardProps) {
+function Card({ title, description, techStack, src, link }: CardProps) {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
+
+  let imageSrc: string | StaticImageData;
+
+  if (typeof src === "string") {
+    imageSrc = src;
+  } else if ("Zealliance" in src) {
+    imageSrc = src.Zealliance;
+  } else {
+    imageSrc = src;
+  }
+
   return (
     <div
       className=" cursor-pointer border-2 m-auto border-[#f1faee] relative rounded-3xl w-[60%] h-[60%]  lg:min-w-[24%] lg:h-[67%] aspect-square box-shadow hover:border-[#fde68a] "
@@ -35,7 +40,7 @@ function Card({
         <a target="_blank" rel="noopener noreferrer">
           <Image
             className="rounded-3xl"
-            src={typeof src === "string" ? src : src}
+            src={imageSrc}
             alt="Project Image"
             layout="fill" // Make the image fill its parent container
             objectFit="cover" // Cover the container while maintaining aspect ratio
