@@ -72,7 +72,7 @@ function ProjectDetails({
 }: ProjectDetailsProps) {
   return (
     <>
-      <div className="animate-slow-appear px-2 py-2 bg-[#f1faee] lg:flex flex-col w-full lg:h-[30%] h-[40%]  absolute bottom-0 rounded-b-2xl  text-[#141414]">
+      <div className="animate-slow-appear px-2 py-2 bg-[#f1faee] lg:flex flex-col w-full lg:h-[30%] h-[40%] hidden  absolute bottom-0 rounded-b-2xl  text-[#141414]">
         {" "}
         <div className="text-xs font-bold lg:text-base">{title}</div>
         <div className=" text-[0.4rem] flex grow lg:text-[0.7rem] flex-1 font-bold">
