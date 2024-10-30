@@ -89,7 +89,8 @@ const Home: React.FC = () => {
         }
       );
       setError("Form submitted successfully");
-    } catch (err) {
+    } catch (error) {
+      console.error(error);
       setError("An error occurred while submitting the form");
     } finally {
     }
@@ -401,13 +402,13 @@ const Home: React.FC = () => {
               required
               type="text"
               placeholder="Enter Your Name"
-              className="shadow-[#979eaa] shadow-md focus:text-[#9ca3af] focus:placeholder:text-[#d6cc99] focus:bg-[#141414] focus:border-[#37d299] text-[#141414] font-bold border-[3px] py-4 px-4 text-xl rounded-lg bg-transparent lg:w-[30%] border-[#141414] placeholder:font-bold "
+              className="shadow-[#979eaa] shadow-md focus:placeholder:text-[#9ca3af] focus:text-[#d6cc99] focus:bg-[#141414] focus:border-[#37d299] text-[#141414] font-bold border-[3px] py-4 px-4 text-xl rounded-lg bg-transparent lg:w-[30%] border-[#141414] placeholder:font-bold "
             />
 
             <input
               name="email"
               required
-              className="shadow-[#979eaa] shadow-md focus:text-[#9ca3af] focus:placeholder:text-[#d6cc99] focus:bg-[#141414] focus:border-[#37d299] text-[#141414] font-bold border-[3px] px-4 py-4 text-xl rounded-lg bg-transparent  lg:w-[30%] border-[#141414]  placeholder:font-bold "
+              className="shadow-[#979eaa] shadow-md focus:placeholder:text-[#9ca3af] focus:text-[#d6cc99] focus:bg-[#141414] focus:border-[#37d299] text-[#141414] font-bold border-[3px] px-4 py-4 text-xl rounded-lg bg-transparent  lg:w-[30%] border-[#141414]  placeholder:font-bold "
               type="email"
               placeholder=" Enter Your Email"
             />
@@ -416,7 +417,7 @@ const Home: React.FC = () => {
             <textarea
               name="message"
               required
-              className=" shadow-[0_4px_6px_0_rgba(151,158,170,0.5)]  focus:text-[#9ca3af] focus:bg-[#141414] focus:border-[#37d299] focus:rounded-lg focus:placeholder:text-[#d6cc99] text-[#141414] font-bold border-b-[3px] rounded-none w-full px-4 py-4 text-xl  bg-transparent   border-[#141414]  placeholder:font-bold "
+              className=" shadow-[0_4px_6px_0_rgba(151,158,170,0.5)]  focus:placeholder:text-[#9ca3af] focus:bg-[#141414] focus:border-[#37d299] focus:rounded-lg focus:text-[#d6cc99] text-[#141414] font-bold border-b-[3px] rounded-none w-full px-4 py-4 text-xl  bg-transparent   border-[#141414]  placeholder:font-bold "
               placeholder="Enter Your Message"
             />
           </div>
