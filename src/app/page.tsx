@@ -3,7 +3,7 @@ import Socials from "./socials";
 import Image from "next/image";
 import NavBar from "./NavBar";
 import Card from "./Card";
-import { useRef } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import Skill from "./skills";
 
 import react from "../../public/svg/react.svg";
@@ -25,6 +25,7 @@ import Java from "../../public/svg/java.svg";
 import C from "../../public/svg/c.svg";
 
 import Zealliance from "../../public/images/Zealliance.png";
+import axios from "axios";
 
 const projectDetails = [
   {
@@ -51,6 +52,53 @@ const projectDetails = [
 ];
 
 const Home: React.FC = () => {
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const lastSubmissionTime = localStorage.getItem("lastSubmission");
+    const currentTime = new Date().getTime();
+    const coolDown = 10000;
+
+    if (
+      lastSubmissionTime &&
+      currentTime - parseInt(lastSubmissionTime) < coolDown
+    ) {
+      setError("Please wait before submitting again");
+      return;
+    }
+    localStorage.setItem("lastSubmission", currentTime.toString());
+
+    const formData = {
+      name: (event.currentTarget.elements.namedItem("name") as HTMLInputElement)
+        .value,
+      email: (
+        event.currentTarget.elements.namedItem("email") as HTMLInputElement
+      ).value,
+      message: (
+        event.currentTarget.elements.namedItem("message") as HTMLTextAreaElement
+      ).value,
+    };
+
+    try {
+      await axios.post(
+        "https://discord.com/api/webhooks/1301146455557537912/5dV98So1Qo75KRnHTTActXHa9RL6vdE6uAAUZmoMo2DD3BBcRK7vm0JKZ7rmNMEkGjaR",
+        {
+          content: `**Name**: ${formData.name}\n**Email**: ${formData.email}\n**Message**: ${formData.message}\n\n\n`,
+        }
+      );
+      setError("Form submitted successfully");
+    } catch (err) {
+      setError("An error occurred while submitting the form");
+    } finally {
+    }
+  };
+  useEffect(() => {
+    setTimeout(() => {
+      setError(null);
+    }, 5000);
+  }, [error]);
   const containerRef = useRef<HTMLDivElement>(null);
   const projectsRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
@@ -344,17 +392,21 @@ const Home: React.FC = () => {
           Got a question or proposal ,or just want to say hello ? Go ahead
         </div>
         <form
-          action="submit"
+          onSubmit={handleSubmit}
           className="w-full flex-col flex items-center justify-center "
         >
           <div className="flex lg:flex-row   flex-col items-center justify-center w-full gap-10 mb-10 lg:gap-40 lg:mb-20">
             <input
+              name="name"
+              required
               type="text"
               placeholder="Enter Your Name"
               className="shadow-[#979eaa] shadow-md focus:text-[#9ca3af] focus:placeholder:text-[#d6cc99] focus:bg-[#141414] focus:border-[#37d299] text-[#141414] font-bold border-[3px] py-4 px-4 text-xl rounded-lg bg-transparent lg:w-[30%] border-[#141414] placeholder:font-bold "
             />
 
             <input
+              name="email"
+              required
               className="shadow-[#979eaa] shadow-md focus:text-[#9ca3af] focus:placeholder:text-[#d6cc99] focus:bg-[#141414] focus:border-[#37d299] text-[#141414] font-bold border-[3px] px-4 py-4 text-xl rounded-lg bg-transparent  lg:w-[30%] border-[#141414]  placeholder:font-bold "
               type="email"
               placeholder=" Enter Your Email"
@@ -362,6 +414,8 @@ const Home: React.FC = () => {
           </div>
           <div className="w-full lg:px-60 lg:mb-20 my-5">
             <textarea
+              name="message"
+              required
               className=" shadow-[0_4px_6px_0_rgba(151,158,170,0.5)]  focus:text-[#9ca3af] focus:bg-[#141414] focus:border-[#37d299] focus:rounded-lg focus:placeholder:text-[#d6cc99] text-[#141414] font-bold border-b-[3px] rounded-none w-full px-4 py-4 text-xl  bg-transparent   border-[#141414]  placeholder:font-bold "
               placeholder="Enter Your Message"
             />
@@ -372,6 +426,12 @@ const Home: React.FC = () => {
           >
             Say Hello
           </button>
+
+          {error && (
+            <div className="text-red-500 font-semibold text-sm mt-2 ">
+              {error}
+            </div>
+          )}
         </form>
       </div>
     </>
