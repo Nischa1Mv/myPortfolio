@@ -83,7 +83,7 @@ const Home: React.FC = () => {
 
     try {
       await axios.post(
-        "https://discord.com/api/webhooks/1301146455557537912/5dV98So1Qo75KRnHTTActXHa9RL6vdE6uAAUZmoMo2DD3BBcRK7vm0JKZ7rmNMEkGjaR",
+        `https://discord.com/api/webhooks/${process.env.NEXT_PUBLIC_discordID}/${process.env.NEXT_PUBLIC_discordToken}`,
         {
           content: `**Name**: ${formData.name}\n**Email**: ${formData.email}\n**Message**: ${formData.message}\n\n\n`,
         }
