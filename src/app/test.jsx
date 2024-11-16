@@ -1,10 +1,12 @@
-import React from "react";
+"use client";
+
+import { useRef } from "react";
 
 const ScrollToNearestDiv = () => {
-  const divRefs = React.useRef([]);
-  const scrollSVG = React.useRef(null);
-  const [isRotated, setIsRotated] = React.useState(false);
+  const divRefs = useRef([]);
+  const scrollSVG = useRef(null);
 
+  // Handle click to scroll to the nearest div
   const handleClick = () => {
     if (!divRefs.current.length) return;
 
@@ -12,41 +14,44 @@ const ScrollToNearestDiv = () => {
     let minDistance = Infinity;
     const firstDiv = divRefs.current[0];
     const lastDiv = divRefs.current[divRefs.current.length - 1];
+    // const length = divRefs.current.length;
 
-    for (const div of divRefs.current) {
+    // Loop through all divs to find the nearest one
+    divRefs.current.forEach((div, index) => {
       const rect = div.getBoundingClientRect();
       const distance = rect.top;
+      // Check if the last div is fully in view
+      if (div === lastDiv) {
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+          console.log("Last div is fully in view");
+          firstDiv.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
 
-      // If the last div is fully occupying the screen
-      if (
-        div === lastDiv &&
-        rect.top >= 0 &&
-        rect.bottom <= window.innerHeight
-      ) {
-        firstDiv.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-        setIsRotated(false); // Reset SVG rotation
-        return;
+          if (scrollSVG.current) {
+            scrollSVG.current.style.transform = "rotate(0deg)";
+          }
+          return;
+        }
       }
 
-      // Skip if any div is already fully visible
+      // Check if the div is fully in view
       if (
         rect.top >= 0 &&
         rect.left >= 0 &&
         rect.bottom <= window.innerHeight &&
         rect.right <= window.innerWidth
       ) {
-        return;
+        console.log(" div is fully in view");
+        nearestDiv = divRefs.current[index + 1] || firstDiv;
       }
-
-      // Find the nearest div partially visible below the viewport
-      if (distance > 0 && distance < minDistance) {
+      // If the div is partially visible, find the nearest one
+      else if (distance < minDistance && distance > 0) {
         minDistance = distance;
         nearestDiv = div;
       }
-    }
+    });
 
     // Scroll to the nearest div
     if (nearestDiv) {
@@ -54,32 +59,51 @@ const ScrollToNearestDiv = () => {
         behavior: "smooth",
         block: "start",
       });
-
-      // Update SVG rotation if the last div becomes visible
+      // Rotate SVG if scrolled to the last div
       if (nearestDiv === lastDiv) {
-        setIsRotated(true);
+        if (scrollSVG.current) {
+          scrollSVG.current.style.transform = "rotate(180deg)";
+        }
       }
     }
   };
 
   return (
     <div>
-      {["blue", "green", "yellow", "red"].map((color, index) => (
-        <div
-          key={index}
-          ref={(el) => (divRefs.current[index] = el)}
-          className={`section h-screen bg-${color}-200 flex items-center justify-center`}
-        >
-          Div {index + 1}
-        </div>
-      ))}
+      <div
+        ref={(el) => (divRefs.current[0] = el)}
+        id="1"
+        className="section h-screen bg-blue-200 flex items-center justify-center"
+      >
+        Div 1
+      </div>
+      <div
+        ref={(el) => (divRefs.current[1] = el)}
+        id="2"
+        className="section h-screen bg-green-200 flex items-center justify-center"
+      >
+        Div 2
+      </div>
+      <div
+        ref={(el) => (divRefs.current[2] = el)}
+        id="3"
+        className="section h-screen bg-yellow-200 flex items-center justify-center"
+      >
+        Div 3
+      </div>
+      <div
+        ref={(el) => (divRefs.current[3] = el)}
+        id="4"
+        className="section h-screen bg-red-200 flex items-center justify-center"
+      >
+        Div 4
+      </div>
 
       <svg
         ref={scrollSVG}
         onClick={handleClick}
-        className={`w-6 h-6 fixed bottom-4 right-4 transform ${
-          isRotated ? "rotate-180" : ""
-        }`}
+        className="w-6 h-6 fixed bottom-4 right-4 cursor-pointer transform ${
+          "
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
