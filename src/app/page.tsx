@@ -188,14 +188,6 @@ const Home: React.FC = () => {
         <div
           className=" lg:hidden flex  space-x-10 mt-10  justify-center items-center px-4 py-4
           mix-blend-difference "
-          // style={{
-          //   background: "rgba(255, 255, 255, 0.05)",
-          //   boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
-          //   backdropFilter: "blur(3.5px)",
-          //   WebkitBackdropFilter: "blur(3.5px)",
-          //   borderRadius: "10px",
-          //   border: "1px solid rgba(255, 255, 255, 0.18)",
-          // }}
         >
           <Socials />
         </div>
