@@ -3,7 +3,7 @@ import Socials from "./socials";
 import Image from "next/image";
 import NavBar from "./NavBar";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 import MyProjects from "./MyProjects";
 import ContactMe from "./ContactMe";
