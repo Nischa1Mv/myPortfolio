@@ -79,7 +79,7 @@ const Home: React.FC = () => {
       <svg
         ref={scrollSVG}
         onClick={handleClick}
-        className=" hidden lg:flex cursor-pointer mix-blend-difference  z-50 fixed right-6 bottom-10 px-2 py-1 border-2 border-white p rounded-xl"
+        className=" hidden lg:flex cursor-pointer mix-blend-difference  z-50 fixed right-6 bottom-4  border-2 border-white p rounded-2xl"
         style={{
           background: "rgba(255, 255, 255, 0.05)",
           boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",

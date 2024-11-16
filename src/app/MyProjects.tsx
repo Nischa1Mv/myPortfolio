@@ -19,6 +19,8 @@ import Cpp from "../../public/svg/cpp.svg";
 import Java from "../../public/svg/java.svg";
 import C from "../../public/svg/c.svg";
 import Zealliance from "../../public/images/Zealliance.png";
+import URLShortner from "../../public/images/URLShortner.png";
+import PasswordManager from "../../public/images/PasswordManager.png";
 
 const projectDetails = [
   {
@@ -33,14 +35,14 @@ const projectDetails = [
     description: "Manage all your passwords of all Platforms in one place",
     techStack: ["React.js", "Javascript", "Firebase", "Tailwind"],
     link: "https://github.com/Nischa1Mv/passwordManager",
-    Src: "",
+    Src: { PasswordManager },
   },
   {
     title: "URL Shortener",
     description: "Shorten your long URL's to a short one",
     techStack: ["React.js", "Javascript", "Firebase", "Tailwind"],
     link: "https://github.com/Nischa1Mv/UrlShortener",
-    Src: "",
+    Src: { URLShortner },
   },
   {
     title: "URL Shortener",
@@ -66,7 +68,7 @@ function MyProjects({ divRefs }: Props) {
         event.preventDefault();
         event.stopPropagation();
 
-        container.scrollLeft += event.deltaY;
+        container.scrollLeft += event.deltaY * 5;
       }
     }
   };
@@ -93,7 +95,7 @@ function MyProjects({ divRefs }: Props) {
           <span className="text-[#37D299]"> Projects</span>
         </div>
         <div
-          className=" flex lg:flex-row flex-col border border-opacity-20 border-white lg:border-none  xl:gap-10 overflow-x-auto overflow-y-auto lg:h-fit h-[55%]   mt-8 mb-5 scrollbar-hide lg:mb-10 py-4 px-4"
+          className=" flex lg:flex-row flex-col border border-opacity-20 border-white lg:border-none lg:ml-6  xl:gap-6 overflow-x-auto overflow-y-auto lg:h-fit h-[55%]   mt-8 mb-5 scrollbar-hide lg:mb-10 py-2 px-2"
           ref={containerRef}
           onWheel={handleScroll}
           onMouseEnter={handleMouseEnter}
@@ -101,9 +103,12 @@ function MyProjects({ divRefs }: Props) {
           style={{
             scrollBehavior: "smooth",
             pointerEvents: "auto",
-            // background: "rgba(255, 255, 255, 0.05)",
-            // boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
-            borderRadius: "10px",
+            background: "#141414",
+            boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.01)", // box-shadow in camelCase
+            backdropFilter: "blur(0px)", // backdrop-filter in camelCase
+            WebkitBackdropFilter: "blur(0px)", // -webkit-backdrop-filter in camelCase
+            borderRadius: "10px", // border-radius in camelCase
+            border: "1px solid rgba(255, 255, 255, 0.18)",
           }}
         >
           {projectDetails.map((project, index) => (

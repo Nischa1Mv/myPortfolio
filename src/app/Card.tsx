@@ -7,10 +7,14 @@ interface CardProps {
   title: string;
   description: string;
   techStack: string[];
-  src: string | StaticImageData | { Zealliance: StaticImageData };
+  src:
+    | string
+    | StaticImageData
+    | { Zealliance: StaticImageData }
+    | { URLShortner: StaticImageData }
+    | { PasswordManager: StaticImageData };
   link: string;
 }
-
 function Card({ title, description, techStack, src, link }: CardProps) {
   const [isHovered, setIsHovered] = useState<boolean>(false);
   const handleMouseEnter = () => setIsHovered(true);
@@ -22,13 +26,17 @@ function Card({ title, description, techStack, src, link }: CardProps) {
     imageSrc = src;
   } else if ("Zealliance" in src) {
     imageSrc = src.Zealliance;
+  } else if ("URLShortner" in src) {
+    imageSrc = src.URLShortner;
+  } else if ("PasswordManager" in src) {
+    imageSrc = src.PasswordManager;
   } else {
-    imageSrc = src;
+    imageSrc = src; // It's a StaticImageData directly
   }
 
   return (
     <div
-      className=" cursor-pointer border-2 border-[#f1faee] relative rounded-3xl w-full h-[60%]  lg:min-w-[24%] lg:h-[67%] aspect-square hover:border-[#fde68a] "
+      className=" cursor-pointer border-2 border-[#f1faee] relative rounded-3xl w-full h-[60%]  lg:min-w-[30rem] lg:min-h-[22rem] aspect-square lg:aspect-video hover:border-[#fde68a] "
       onMouseEnter={() => {
         handleMouseEnter();
       }}
@@ -59,6 +67,7 @@ function Card({ title, description, techStack, src, link }: CardProps) {
 }
 
 export default Card;
+
 interface ProjectDetailsProps {
   title: string;
   description: string;
@@ -72,7 +81,7 @@ function ProjectDetails({
 }: ProjectDetailsProps) {
   return (
     <>
-      <div className="animate-slow-appear px-2 py-2 bg-[#f1faee] lg:flex flex-col w-full lg:h-[30%] h-[40%] hidden  absolute bottom-0 rounded-b-2xl  text-[#141414]">
+      <div className="animate-slow-appear px-2 py-2 bg-[rgba(241,250,238,0.9)] lg:flex flex-col w-full lg:h-[30%] h-[40%] hidden  absolute bottom-0 rounded-b-2xl  text-[#141414]">
         {" "}
         <div className="text-xs font-bold lg:text-base">{title}</div>
         <div className=" text-[0.4rem] flex grow lg:text-[0.7rem] flex-1 font-bold">
