@@ -49,6 +49,13 @@ const projectDetails = [
     link: "https://github.com/Nischa1Mv/UrlShortener",
     Src: "",
   },
+  {
+    title: "URL Shortener",
+    description: "Shorten your long URL's to a short one",
+    techStack: ["React.js", "Javascript", "Firebase", "Tailwind"],
+    link: "https://github.com/Nischa1Mv/UrlShortener",
+    Src: "",
+  },
 ];
 
 const Home: React.FC = () => {
@@ -133,6 +140,23 @@ const Home: React.FC = () => {
   };
   return (
     <>
+      <svg
+        className=" hidden lg:flex cursor-pointer mix-blend-difference  z-50 fixed right-6 bottom-10 px-2 py-1 border-2 border-white p rounded-xl"
+        style={{
+          background: "rgba(255, 255, 255, 0.05)",
+          boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+          backdropFilter: "blur(3.5px)",
+          WebkitBackdropFilter: "blur(3.5px)",
+        }}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 -960 960 960"
+        width="50"
+        height="50"
+        fill="#fff"
+      >
+        <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
+      </svg>
+
       {/* -------------------------- PAGE 1 ------------------------------- */}
       <div
         className="fixed shadow-lg z-50  hidden lg:flex flex-col gap-5 top-44 left-0 border-2 px-4 py-4
