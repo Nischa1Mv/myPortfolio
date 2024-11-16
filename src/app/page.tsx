@@ -125,7 +125,7 @@ const Home: React.FC = () => {
         <Socials />
       </div>
 
-      <div className="relative  h-[85vh] bg-[#F1FAEE]  lg:pt-0 " id="page1">
+      <div className="relative  h-[90vh] bg-[#F1FAEE]  lg:pt-0 " id="page1">
         <div className="flex justify-end mb-8">
           <NavBar
             scrollToRef={scrollToRef}
@@ -200,7 +200,7 @@ const Home: React.FC = () => {
           <Socials />
         </div>
       </div>
-      <div className="w-full hidden lg:flex h-[10vh]"></div>
+      {/* <div className="w-full hidden lg:flex h-[10vh]"></div> */}
 
       {/* -------------------------- PAGE 2 ------------------------------- */}
       <MyProjects divRefs={divRefs} />
