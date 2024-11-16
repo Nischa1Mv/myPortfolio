@@ -10,9 +10,9 @@ const ScrollToNearestDiv = () => {
 
     divRefs.current.forEach((div) => {
       const rect = div.getBoundingClientRect();
-      const distance = Math.abs(rect.top);
+      const distance = rect.top;
 
-      if (distance < minDistance) {
+      if (distance < minDistance && distance > 0) {
         minDistance = distance;
         nearestDiv = div;
       }
