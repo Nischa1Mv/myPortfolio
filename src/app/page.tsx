@@ -61,14 +61,14 @@ const projectDetails = [
 ];
 
 const Home: React.FC = () => {
-  const divRefs = useRef([]);
-  const scrollSVG = useRef(null);
+  const divRefs = useRef<(HTMLDivElement | null)[]>(new Array(3).fill(null));
+  const scrollSVG = useRef<SVGSVGElement | null>(null);
 
   // Handle click to scroll to the nearest div
   const handleClick = () => {
     if (!divRefs.current.length) return;
 
-    let nearestDiv = null;
+    let nearestDiv: HTMLDivElement | null = null;
     let minDistance = Infinity;
     const firstDiv = divRefs.current[0];
     const lastDiv = divRefs.current[divRefs.current.length - 1];
@@ -76,13 +76,14 @@ const Home: React.FC = () => {
 
     // Loop through all divs to find the nearest one
     divRefs.current.forEach((div, index) => {
+      if (!div) return;
       const rect = div.getBoundingClientRect();
       const distance = rect.top;
       // Check if the last div is fully in view
       if (div === lastDiv) {
         if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
           console.log("Last div is fully in view");
-          firstDiv.scrollIntoView({
+          firstDiv?.scrollIntoView({
             behavior: "smooth",
             block: "start",
           });
@@ -113,10 +114,11 @@ const Home: React.FC = () => {
 
     // Scroll to the nearest div
     if (nearestDiv) {
-      nearestDiv.scrollIntoView({
+      (nearestDiv as HTMLDivElement).scrollIntoView({
         behavior: "smooth",
         block: "start",
       });
+
       // Rotate SVG if scrolled to the last div
       if (nearestDiv === lastDiv) {
         if (scrollSVG.current) {
@@ -174,13 +176,13 @@ const Home: React.FC = () => {
       setError(null);
     }, 5000);
   }, [error]);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const projectsRef = useRef<HTMLDivElement>(null);
-  const contactRef = useRef<HTMLDivElement>(null);
+  const projectsRef = useRef<HTMLDivElement | null>(null);
+  const contactRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
-  const scrollToRef = (divRef: React.RefObject<HTMLDivElement>) => {
-    if (divRef.current) {
-      divRef.current.scrollIntoView({ behavior: "smooth" });
+  const scrollToRef = (divRef: HTMLDivElement | null) => {
+    if (divRef) {
+      divRef.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -228,7 +230,9 @@ const Home: React.FC = () => {
 
       {/* -------------------------- PAGE 1 ------------------------------- */}
       <div
-        ref={(el) => (divRefs.current[0] = el)}
+        ref={(el) => {
+          divRefs.current[0] = el;
+        }}
         className="fixed shadow-lg z-50  hidden lg:flex flex-col gap-5 top-44 left-0 border-2 px-4 py-4
           mix-blend-difference "
         style={{
@@ -247,8 +251,8 @@ const Home: React.FC = () => {
         <div className="flex justify-end mb-8">
           <NavBar
             scrollToRef={scrollToRef}
-            contactRef={(el) => (divRefs.current[2] = el)}
-            projectsRef={(el) => (divRefs.current[1] = el)}
+            projectsRef={projectsRef}
+            contactRef={contactRef}
           />
         </div>
         <div className=" lg:hidden overflow-hidden shadow-black-xl flex justify-center items-center rounded-full">
@@ -322,9 +326,11 @@ const Home: React.FC = () => {
 
       {/* -------------------------- PAGE 2 ------------------------------- */}
       <div
-        className="h-[100vh] pt-7 lg:pt-10 lg:py-20  px-5 lg:px-20 "
+        className="h-[100vh] pt-7 lg:pt-10 lg:py-20 px-5 lg:px-20"
         id="page2"
-        ref={(el) => (divRefs.current[1] = el)}
+        ref={(el) => {
+          divRefs.current[1] = el; // Set the ref for the second index
+        }}
       >
         <div className="lg:text-5xl text-2xl font-bold">
           <span className="text-[#D23770]">My</span>
@@ -471,9 +477,11 @@ const Home: React.FC = () => {
       </div>
       {/* -------------------------- PAGE 3 ------------------------------- */}
       <div
-        className="py-10   px-6 lg:py-20 lg:px-20 bg-[#F1FAEE] w-full flex-col flex items-center"
+        className="py-10   px-6  lg:px-20 bg-[#F1FAEE] w-full flex-col flex items-center"
         id="page3"
-        ref={(el) => (divRefs.current[2] = el)}
+        ref={(el) => {
+          divRefs.current[2] = el;
+        }}
       >
         {/* TITLE */}
         <div className="relative inline-block mb-10 ">
@@ -523,9 +531,7 @@ const Home: React.FC = () => {
           </button>
 
           {error && (
-            <div className="text-red-500 font-semibold text-sm mt-2 ">
-              {error}
-            </div>
+            <div className="text-red-500 font-semibold text-sm  ">{error}</div>
           )}
         </form>
       </div>

@@ -2,9 +2,9 @@
 import { useState } from "react";
 
 interface NavBarProps {
-  scrollToRef: (divRef: React.RefObject<HTMLDivElement>) => void;
-  projectsRef: React.RefObject<HTMLDivElement>;
-  contactRef: React.RefObject<HTMLDivElement>;
+  scrollToRef: (divRef: HTMLDivElement | null) => void;
+  projectsRef: React.RefObject<HTMLDivElement>; // Change to RefObject
+  contactRef: React.RefObject<HTMLDivElement>; // Change to RefObject
 }
 
 const NavBar: React.FC<NavBarProps> = ({
@@ -23,13 +23,13 @@ const NavBar: React.FC<NavBarProps> = ({
           <div className="cursor-pointer nav-text px-2 lg:px-4">Home</div>
           <div
             className="cursor-pointer nav-text  lg:px-4"
-            onClick={() => scrollToRef(projectsRef)}
+            onClick={() => scrollToRef(projectsRef.current)}
           >
             Projects
           </div>
           <div
             className="cursor-pointer nav-text px-2 lg:px-4"
-            onClick={() => scrollToRef(contactRef)}
+            onClick={() => scrollToRef(contactRef.current)}
           >
             Contact Me
           </div>
