@@ -27,6 +27,8 @@ import C from "../../public/svg/c.svg";
 import Zealliance from "../../public/images/Zealliance.png";
 import axios from "axios";
 
+// import ScrollToNearestDiv from "./test";
+
 const projectDetails = [
   {
     title: "Zealliance",
@@ -59,6 +61,71 @@ const projectDetails = [
 ];
 
 const Home: React.FC = () => {
+  const divRefs = useRef([]);
+  const scrollSVG = useRef(null);
+
+  // Handle click to scroll to the nearest div
+  const handleClick = () => {
+    if (!divRefs.current.length) return;
+
+    let nearestDiv = null;
+    let minDistance = Infinity;
+    const firstDiv = divRefs.current[0];
+    const lastDiv = divRefs.current[divRefs.current.length - 1];
+    // const length = divRefs.current.length;
+
+    // Loop through all divs to find the nearest one
+    divRefs.current.forEach((div, index) => {
+      const rect = div.getBoundingClientRect();
+      const distance = rect.top;
+      // Check if the last div is fully in view
+      if (div === lastDiv) {
+        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+          console.log("Last div is fully in view");
+          firstDiv.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+
+          if (scrollSVG.current) {
+            scrollSVG.current.style.transform = "rotate(0deg)";
+          }
+          return;
+        }
+      }
+
+      // Check if the div is fully in view
+      if (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= window.innerHeight &&
+        rect.right <= window.innerWidth
+      ) {
+        console.log(" div is fully in view");
+        nearestDiv = divRefs.current[index + 1] || firstDiv;
+      }
+      // If the div is partially visible, find the nearest one
+      else if (distance < minDistance && distance > 0) {
+        minDistance = distance;
+        nearestDiv = div;
+      }
+    });
+
+    // Scroll to the nearest div
+    if (nearestDiv) {
+      nearestDiv.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      // Rotate SVG if scrolled to the last div
+      if (nearestDiv === lastDiv) {
+        if (scrollSVG.current) {
+          scrollSVG.current.style.transform = "rotate(180deg)";
+        }
+      }
+    }
+  };
+
   const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -141,6 +208,8 @@ const Home: React.FC = () => {
   return (
     <>
       <svg
+        ref={scrollSVG}
+        onClick={handleClick}
         className=" hidden lg:flex cursor-pointer mix-blend-difference  z-50 fixed right-6 bottom-10 px-2 py-1 border-2 border-white p rounded-xl"
         style={{
           background: "rgba(255, 255, 255, 0.05)",
@@ -159,8 +228,9 @@ const Home: React.FC = () => {
 
       {/* -------------------------- PAGE 1 ------------------------------- */}
       <div
+        ref={(el) => (divRefs.current[0] = el)}
         className="fixed shadow-lg z-50  hidden lg:flex flex-col gap-5 top-44 left-0 border-2 px-4 py-4
-        mix-blend-difference "
+          mix-blend-difference "
         style={{
           background: "rgba(255, 255, 255, 0.05)",
           boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
@@ -177,8 +247,8 @@ const Home: React.FC = () => {
         <div className="flex justify-end mb-8">
           <NavBar
             scrollToRef={scrollToRef}
-            contactRef={contactRef}
-            projectsRef={projectsRef}
+            contactRef={(el) => (divRefs.current[2] = el)}
+            projectsRef={(el) => (divRefs.current[1] = el)}
           />
         </div>
         <div className=" lg:hidden overflow-hidden shadow-black-xl flex justify-center items-center rounded-full">
@@ -235,7 +305,7 @@ const Home: React.FC = () => {
         </div>
         <div
           className=" lg:hidden flex  space-x-10 mt-10  justify-center items-center px-4 py-4
-        mix-blend-difference "
+          mix-blend-difference "
           // style={{
           //   background: "rgba(255, 255, 255, 0.05)",
           //   boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
@@ -252,9 +322,9 @@ const Home: React.FC = () => {
 
       {/* -------------------------- PAGE 2 ------------------------------- */}
       <div
-        className="h-[100vh] pt-7 lg:pt-0 lg:py-20  px-5 lg:px-20 "
+        className="h-[100vh] pt-7 lg:pt-10 lg:py-20  px-5 lg:px-20 "
         id="page2"
-        ref={projectsRef}
+        ref={(el) => (divRefs.current[1] = el)}
       >
         <div className="lg:text-5xl text-2xl font-bold">
           <span className="text-[#D23770]">My</span>
@@ -311,8 +381,8 @@ const Home: React.FC = () => {
           <span className="text-[#37D299]"> Skills</span>
         </div>
         {/* <div className="text-xl mx-6 my-6 font-bold lg:hidden flex">
-          My Skills
-        </div> */}
+            My Skills
+          </div> */}
         <div className="flex lg:hidden justify-center items-center space-x-10 mb-2  ">
           <div className="overflow-hidden whitespace-nowrap flex gap-10 hover:pause-animation   mb-10">
             <div className="flex lg:flex-row flex-col lg:animate-scroll-left lg:space-x-16">
@@ -403,7 +473,7 @@ const Home: React.FC = () => {
       <div
         className="py-10   px-6 lg:py-20 lg:px-20 bg-[#F1FAEE] w-full flex-col flex items-center"
         id="page3"
-        ref={contactRef}
+        ref={(el) => (divRefs.current[2] = el)}
       >
         {/* TITLE */}
         <div className="relative inline-block mb-10 ">
@@ -459,6 +529,9 @@ const Home: React.FC = () => {
           )}
         </form>
       </div>
+      {/* <div>
+        <ScrollToNearestDiv />
+      </div> */}
     </>
   );
 };
