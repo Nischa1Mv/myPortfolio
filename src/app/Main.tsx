@@ -86,14 +86,20 @@ function Main({ divRefs }: MainProps) {
               and seeking new ways to grow both personally and professionally.
             </p>
           </div>
-          <div className=" hidden lg:flex lg:w-[105%]   lg:justify-center lg:items-center ">
-            <div className="border-4 overflow-hidden shadow-black-xl shadow-black border-gray-500 rounded-[6px] ">
+          <div className=" hidden lg:flex lg:w-[90%] ml-6  lg:justify-center lg:items-center">
+            <div
+              className="border-4 overflow-hidden shadow-black-xl border-gray-500 rounded-lg bg-white"
+              style={{
+                padding: "4px",
+                boxShadow: "rgba(255, 215, 0, 0.4) 0px 0px 0px 6px", // Soft gold shadow
+              }}
+            >
               <Image
-                // src="https://media.gq.com/photos/646baa821fa990bc7018e902/master/w_1920,c_limit/GQ0723_Gosling_01.jpg"
                 src="https://avatars.githubusercontent.com/u/118107697?v=4"
                 alt="My_Image"
                 width={450}
                 height={200}
+                className="rounded-md transition-transform duration-300 hover:scale-105"
               />
             </div>
           </div>
