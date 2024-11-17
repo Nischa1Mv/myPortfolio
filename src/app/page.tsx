@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import MyProjects from "./MyProjects";
 import ContactMe from "./ContactMe";
 import Main from "./Main";
@@ -8,6 +8,27 @@ import Main from "./Main";
 const Home: React.FC = () => {
   const divRefs = useRef<(HTMLDivElement | null)[]>(new Array(3).fill(null));
   const scrollSVG = useRef<SVGSVGElement | null>(null);
+  const [isRotated, setIsRotated] = useState(false);
+  const [isBottom, setIsBottom] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const pageHeight = document.documentElement.scrollHeight;
+
+      // Check if the user is within 10px of the bottom
+      if (scrollPosition >= pageHeight - 10) {
+        setIsBottom(true);
+        setIsRotated(true);
+      } else {
+        setIsBottom(false);
+        setIsRotated(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Handle click to scroll to the nearest div
   const handleClick = () => {
@@ -15,8 +36,15 @@ const Home: React.FC = () => {
 
     let nearestDiv: HTMLDivElement | null = null;
     let minDistance = Infinity;
-    const firstDiv = divRefs.current[0];
-    const lastDiv = divRefs.current[divRefs.current.length - 1];
+
+    // If at the bottom, scroll to the top
+    if (isBottom) {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+      return;
+    }
     // const length = divRefs.current.length;
 
     // Loop through all divs to find the nearest one
@@ -25,30 +53,19 @@ const Home: React.FC = () => {
       const rect = div.getBoundingClientRect();
       const distance = rect.top;
       // Check if the last div is fully in view
-      if (div === lastDiv) {
-        if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-          console.log("Last div is fully in view");
-          firstDiv?.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
+      const scrollPosition = window.innerHeight + window.scrollY;
+      const pageHeight = document.documentElement.scrollHeight;
 
-          if (scrollSVG.current) {
-            scrollSVG.current.style.transform = "rotate(0deg)";
-          }
-          return;
-        }
-      }
-
-      // Check if the div is fully in view
       if (
         rect.top >= 0 &&
         rect.left >= 0 &&
         rect.bottom <= window.innerHeight &&
         rect.right <= window.innerWidth
       ) {
+        // Check if the div is fully in view
+
         console.log(" div is fully in view");
-        nearestDiv = divRefs.current[index + 1] || firstDiv;
+        nearestDiv = divRefs.current[index + 1];
       }
       // If the div is partially visible, find the nearest one
       else if (distance < minDistance && distance > 0) {
@@ -63,13 +80,6 @@ const Home: React.FC = () => {
         behavior: "smooth",
         block: "start",
       });
-
-      // Rotate SVG if scrolled to the last div
-      if (nearestDiv === lastDiv) {
-        if (scrollSVG.current) {
-          scrollSVG.current.style.transform = "rotate(180deg)";
-        }
-      }
     }
   };
 
@@ -79,7 +89,9 @@ const Home: React.FC = () => {
       <svg
         ref={scrollSVG}
         onClick={handleClick}
-        className=" hidden lg:flex cursor-pointer mix-blend-difference  z-50 fixed right-6 bottom-4  border-2 border-white p rounded-2xl"
+        className={` ${
+          isRotated ? "rotate-180" : ""
+        }   hidden lg:flex cursor-pointer mix-blend-difference  z-50 fixed right-6 bottom-4  border-2 border-white p rounded-2xl`}
         style={{
           background: "rgba(255, 255, 255, 0.05)",
           boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",

@@ -105,7 +105,6 @@ function MyProjects({ divRefs }: Props) {
             pointerEvents: "auto",
             background: "#141414",
             boxShadow: "0 4px 12px rgba(255, 255, 255, 0.15)",
-
             backdropFilter: "blur(0px)", // backdrop-filter in camelCase
             WebkitBackdropFilter: "blur(0px)", // -webkit-backdrop-filter in camelCase
             borderRadius: "10px", // border-radius in camelCase

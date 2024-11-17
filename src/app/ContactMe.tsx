@@ -63,7 +63,7 @@ function ContactMe({ divRefs }: ContactMeProps) {
 
   return (
     <div
-      className="py-10 px-6 lg:px-20 bg-[#F1FAEE] w-full flex-col flex items-center"
+      className=" h-[100vh] py-10 px-6 lg:px-20 bg-[#F1FAEE] w-full flex-col flex items-center"
       id="page3"
       ref={(el) => {
         divRefs.current[2] = el;

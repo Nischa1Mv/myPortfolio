@@ -36,7 +36,7 @@ function Main({ divRefs }: MainProps) {
         <Socials />
       </div>
 
-      <div className="relative  h-[90vh] bg-[#F1FAEE]  lg:pt-0 " id="page1">
+      <div className="relative  h-[100vh] bg-[#F1FAEE]  lg:pt-0 " id="page1">
         <div className="flex justify-end mb-8">
           <NavBar
             scrollToRef={scrollToRef}
