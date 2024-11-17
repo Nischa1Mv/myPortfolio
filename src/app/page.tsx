@@ -84,10 +84,10 @@ const Home: React.FC = () => {
     <>
       {/* Down Arrow -> scrollSVG  */}
       <div
-        className="z-50 fixed right-6 bottom-4 border-2 border-white rounded-2xl mix-blend-difference"
+        className="z-50 fixed right-8 bottom-8 border-2 border-white rounded-2xl mix-blend-difference"
         style={{
           background: "rgba(255, 255, 255, 0.05)",
-          boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+          boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
           backdropFilter: "blur(3.5px)",
           WebkitBackdropFilter: "blur(3.5px)",
         }}
@@ -102,7 +102,7 @@ const Home: React.FC = () => {
           viewBox="0 -960 960 960"
           width="50"
           height="50"
-          fill="#fff"
+          fill="currentColor"
         >
           <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
         </svg>

@@ -26,7 +26,7 @@ function Main({ divRefs }: MainProps) {
     mix-blend-difference "
         style={{
           background: "rgba(255, 255, 255, 0.05)",
-          boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+          boxShadow: "0 8px 32px 0 rgba(0, 0, 0, 0.35)",
           backdropFilter: "blur(3.5px)",
           WebkitBackdropFilter: "blur(3.5px)",
           borderRadius: "10px",
