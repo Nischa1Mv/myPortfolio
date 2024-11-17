@@ -104,11 +104,12 @@ function MyProjects({ divRefs }: Props) {
             scrollBehavior: "smooth",
             pointerEvents: "auto",
             background: "#141414",
-            boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.01)", // box-shadow in camelCase
+            boxShadow: "0 4px 12px rgba(255, 255, 255, 0.15)",
+
             backdropFilter: "blur(0px)", // backdrop-filter in camelCase
             WebkitBackdropFilter: "blur(0px)", // -webkit-backdrop-filter in camelCase
             borderRadius: "10px", // border-radius in camelCase
-            border: "1px solid rgba(255, 255, 255, 0.18)",
+            // border: "1px solid rgba(255, 255, 255, 0.18)",
           }}
         >
           {projectDetails.map((project, index) => (
