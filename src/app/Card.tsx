@@ -36,7 +36,7 @@ function Card({ title, description, techStack, src, link }: CardProps) {
 
   return (
     <div
-      className=" cursor-pointer border-2 border-[#f1faee] relative rounded-3xl w-full h-[60%]  lg:min-w-[30rem] lg:min-h-[22rem] aspect-square lg:aspect-video hover:border-[#fde68a] "
+      className=" cursor-pointer border-2 border-[#f1faee] overflow-hidden  relative rounded-3xl w-full h-[60%]  lg:min-w-[30rem] lg:min-h-[22rem] aspect-square lg:aspect-video hover:border-[#fde68a]"
       onMouseEnter={() => {
         handleMouseEnter();
       }}
@@ -47,7 +47,7 @@ function Card({ title, description, techStack, src, link }: CardProps) {
       <Link href={link} passHref legacyBehavior>
         <a target="_blank" rel="noopener noreferrer">
           <Image
-            className="rounded-3xl"
+            className="rounded-3xl transform transition-transform duration-300 hover:scale-110"
             src={imageSrc}
             alt="Project Image"
             layout="fill" // Make the image fill its parent container
