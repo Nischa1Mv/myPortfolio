@@ -45,17 +45,14 @@ const Home: React.FC = () => {
       });
       return;
     }
-    // const length = divRefs.current.length;
 
     // Loop through all divs to find the nearest one
     divRefs.current.forEach((div, index) => {
       if (!div) return;
       const rect = div.getBoundingClientRect();
       const distance = rect.top;
-      // Check if the last div is fully in view
-      const scrollPosition = window.innerHeight + window.scrollY;
-      const pageHeight = document.documentElement.scrollHeight;
 
+      //div occupies the full screen
       if (
         rect.top >= 0 &&
         rect.left >= 0 &&
