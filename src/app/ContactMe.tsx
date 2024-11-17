@@ -80,9 +80,9 @@ function ContactMe({ divRefs }: ContactMeProps) {
       </div>
       <form
         onSubmit={handleSubmit}
-        className="w-full flex-col flex items-center justify-center"
+        className="w-full flex-col flex items-center justify-center gap-20"
       >
-        <div className="flex lg:flex-row flex-col items-center justify-center w-full gap-10 mb-10 lg:gap-40 lg:mb-20">
+        <div className="flex lg:flex-row flex-col items-center justify-center w-full gap-10 mb-10 lg:gap-40 ">
           <input
             name="name"
             required
@@ -103,7 +103,7 @@ function ContactMe({ divRefs }: ContactMeProps) {
             className="shadow-[#979eaa] shadow-md focus:placeholder:text-[#9ca3af] focus:text-[#d6cc99] focus:bg-[#141414] focus:border-[#37d299] text-[#141414] font-bold border-[3px] px-4 py-4 text-xl rounded-lg bg-transparent lg:w-[30%] border-[#141414] placeholder:font-bold"
           />
         </div>
-        <div className="w-full lg:px-60 lg:mb-20 my-5">
+        <div className="w-full lg:px-60 ">
           <textarea
             name="message"
             required
