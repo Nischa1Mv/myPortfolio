@@ -38,7 +38,7 @@ const NavBar: React.FC<NavBarProps> = ({
             onClick={handleDownloadPdf}
           >
             <a
-              href={`./Resume.pdf`}
+              href={`./Nischal_Resume.pdf`}
               download
               target="_blank"
               rel="noopener noreferrer"
