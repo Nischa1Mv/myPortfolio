@@ -3,6 +3,7 @@ import Socials from "./socials";
 import Image from "next/image";
 import NavBar from "./NavBar";
 import { useRef } from "react";
+import profilePicture from "../../public/images/profilePicture.jpeg";
 
 interface MainProps {
   divRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
@@ -44,18 +45,22 @@ function Main({ divRefs }: MainProps) {
             contactRef={contactRef}
           />
         </div>
-<div className="lg:hidden overflow-hidden shadow-xl shadow-black flex justify-center items-center rounded-full">
-  <Image
-    className="rounded-full aspect-square"
-    src="https://avatars.githubusercontent.com/u/118107697?v=4&s=400"
-    alt="My_Image"
-    width={190}
-    height={190}
-    quality={100}
-    priority
-  />
-</div>
-
+        <div
+          className="lg:hidden w-fit m-auto p-1 border-2 border-[#37D299] rounded-xl bg-white shadow-md"
+          style={{
+            boxShadow: "0 0 10px 3px rgba(55, 210, 153, 0.35)", // soft mint glow
+          }}
+        >
+          <Image
+            className="rounded-lg aspect-auto transition-transform duration-300 hover:scale-105 hover:rotate-1"
+            src={profilePicture}
+            alt="My_Image"
+            width={250}
+            height={200}
+            quality={100}
+            priority
+          />
+        </div>
 
         <div className="flex mx-5">
           <div className=" mt-4  lg:mt-14 lg:ml-24">
@@ -88,20 +93,20 @@ function Main({ divRefs }: MainProps) {
               and seeking new ways to grow both personally and professionally.
             </p>
           </div>
-          <div className=" hidden lg:flex lg:w-[90%] ml-6  lg:justify-center lg:items-center">
+          <div className="hidden lg:flex w-full justify-center items-center px-6 py-4">
             <div
-              className="border-4 overflow-hidden shadow-black-xl border-gray-500 rounded-lg bg-white"
+              className="border-4 border-[#37D299] rounded-xl bg-white overflow-hidden transition-shadow shadow-lg"
               style={{
                 padding: "4px",
-                boxShadow: "rgba(255, 215, 0, 0.4) 0px 0px 0px 6px", // Soft gold shadow
+                boxShadow: "0 0 12px 4px rgba(55, 210, 153, 0.4)", // soft mint green glow
               }}
             >
               <Image
-                src="https://avatars.githubusercontent.com/u/118107697?v=4"
-                alt="My_Image"
+                src={profilePicture}
+                alt="My Image"
                 width={450}
-                height={200}
-                className="rounded-md transition-transform duration-300 hover:scale-105"
+                height={300}
+                className="rounded-md transition-transform duration-300 hover:scale-105 hover:rotate-1 hover:shadow-xl"
               />
             </div>
           </div>
