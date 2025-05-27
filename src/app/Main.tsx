@@ -44,16 +44,18 @@ function Main({ divRefs }: MainProps) {
             contactRef={contactRef}
           />
         </div>
-        <div className=" lg:hidden overflow-hidden shadow-black-xl flex justify-center items-center rounded-full ">
-          <Image
-            className="rounded-full aspect-square"
-            // src="https://media.gq.com/photos/646baa821fa990bc7018e902/master/w_1920,c_limit/GQ0723_Gosling_01.jpg"
-            src="https://avatars.githubusercontent.com/u/118107697?v=4"
-            alt="My_Image"
-            width={190}
-            height={100}
-          />
-        </div>
+<div className="lg:hidden overflow-hidden shadow-xl shadow-black flex justify-center items-center rounded-full">
+  <Image
+    className="rounded-full aspect-square"
+    src="https://avatars.githubusercontent.com/u/118107697?v=4&s=400"
+    alt="My_Image"
+    width={190}
+    height={190}
+    quality={100}
+    priority
+  />
+</div>
+
 
         <div className="flex mx-5">
           <div className=" mt-4  lg:mt-14 lg:ml-24">
