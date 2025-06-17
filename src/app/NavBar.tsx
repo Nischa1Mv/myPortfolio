@@ -16,11 +16,24 @@ const NavBar: React.FC<NavBarProps> = ({
 
   const handleDownloadPdf = () => {};
 
+  // Scroll to the top of the page for home
+  const scrollToHome = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <nav className="nav-text-bg flex lg:py-1 lg:w-fit w-full lg:justify-normal justify-end px-4  ">
       {isMenu && (
         <div className="menu-container flex text-sm lg:text-lg text-[#111827] items-center lg:justify-normal justify-between  w-full  lg:px-4">
-          <div className="cursor-pointer nav-text px-2 lg:px-4">Home</div>
+          <div 
+            className="cursor-pointer nav-text px-2 lg:px-4"
+            onClick={scrollToHome}
+          >
+            Home
+          </div>
           <div
             className="cursor-pointer nav-text  lg:px-4"
             onClick={() => scrollToRef(projectsRef.current)}
