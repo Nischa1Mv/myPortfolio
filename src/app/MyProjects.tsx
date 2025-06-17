@@ -28,14 +28,15 @@ const projectDetails = [
   {
     title: "Ping",
     description: "Online Messaging app to connect with friends",
-    techStack: ["React.js", "Typescript", "Tailwind"],
+    techStack: ["Next.js", "Typescript", "Mongodb", "Websockets", "Tailwind"],
     link: "https://pings-iota.vercel.app/",
     Src: { Ping },
   },
   {
     title: "Memorise",
-    description: "A notes app to help you organize and remember important information.",
-    techStack: ["React.js", "Typescript", "Tailwind"],
+    description:
+      "A notes app to help you organize and remember important information.",
+    techStack: ["Next.js", "Typescript", "Mongodb", "Tailwind"],
     link: "https://github.com/Nischa1Mv/memo-rise",
     Src: { memorise },
   },
@@ -59,13 +60,6 @@ const projectDetails = [
     techStack: ["React.js", "Javascript", "Firebase", "Tailwind"],
     link: "https://github.com/Nischa1Mv/UrlShortener",
     Src: { URLShortner },
-  },
-  {
-    title: "URL Shortener",
-    description: "Shorten your long URL's to a short one",
-    techStack: ["React.js", "Javascript", "Firebase", "Tailwind"],
-    link: "https://github.com/Nischa1Mv/UrlShortener",
-    Src: "",
   },
 ];
 interface Props {
