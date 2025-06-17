@@ -2,19 +2,52 @@
 import Socials from "./socials";
 import Image from "next/image";
 import NavBar from "./NavBar";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import profilePicture from "../../public/images/profilePicture.jpeg";
 
 interface MainProps {
   divRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
 }
 function Main({ divRefs }: MainProps) {
+  // Create refs that point to elements in divRefs
+  const homeRef = useRef<HTMLDivElement | null>(null);
   const projectsRef = useRef<HTMLDivElement | null>(null);
   const contactRef = useRef<HTMLDivElement | null>(null);
+  
+  // Update our refs whenever divRefs changes
+  useEffect(() => {
+    const syncRefs = () => {
+      projectsRef.current = divRefs.current[1];
+      contactRef.current = divRefs.current[2];
+    };
+    
+    // Initial sync
+    syncRefs();
+    
+    // Set up MutationObserver to watch for changes in the DOM
+    const observer = new MutationObserver(syncRefs);
+    observer.observe(document.body, { 
+      childList: true, 
+      subtree: true 
+    });
+    
+    return () => observer.disconnect();
+  }, [divRefs]);
 
   const scrollToRef = (divRef: HTMLDivElement | null) => {
+    console.log("Attempting to scroll to:", divRef);
     if (divRef) {
-      divRef.scrollIntoView({ behavior: "smooth" });
+      try {
+        divRef.scrollIntoView({ 
+          behavior: "smooth", 
+          block: "start" 
+        });
+        console.log("Scrolled to element");
+      } catch (error) {
+        console.error("Error scrolling to element:", error);
+      }
+    } else {
+      console.warn("Cannot scroll - reference is null");
     }
   };
   return (

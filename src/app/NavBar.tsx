@@ -3,8 +3,8 @@ import { useState } from "react";
 
 interface NavBarProps {
   scrollToRef: (divRef: HTMLDivElement | null) => void;
-  projectsRef: React.RefObject<HTMLDivElement>; // Change to RefObject
-  contactRef: React.RefObject<HTMLDivElement>; // Change to RefObject
+  projectsRef: React.RefObject<HTMLDivElement>;
+  contactRef: React.RefObject<HTMLDivElement>;
 }
 
 const NavBar: React.FC<NavBarProps> = ({
@@ -14,20 +14,32 @@ const NavBar: React.FC<NavBarProps> = ({
 }) => {
   const [isMenu, setIsMenu] = useState(false);
 
-  const handleDownloadPdf = () => {};
-
-  // Scroll to the top of the page for home
+  // Function to scroll to top for home section
   const scrollToHome = () => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
+    
+    // Close menu after clicking (for mobile)
+    setIsMenu(false);
+  };
+  
+  // Function to handle section navigation and close menu
+  const handleNavigation = (ref: HTMLDivElement | null) => {
+    console.log("Navigating to section", ref);
+    if (ref) {
+      scrollToRef(ref);
+      setIsMenu(false);
+    } else {
+      console.log("Reference is null - navigation failed");
+    }
   };
 
   return (
-    <nav className="nav-text-bg flex lg:py-1 lg:w-fit w-full lg:justify-normal justify-end px-4  ">
+    <nav className="nav-text-bg flex lg:py-1 lg:w-fit w-full lg:justify-normal justify-end px-4">
       {isMenu && (
-        <div className="menu-container flex text-sm lg:text-lg text-[#111827] items-center lg:justify-normal justify-between  w-full  lg:px-4">
+        <div className="menu-container flex text-sm lg:text-lg text-[#111827] items-center lg:justify-normal justify-between w-full lg:px-4">
           <div 
             className="cursor-pointer nav-text px-2 lg:px-4"
             onClick={scrollToHome}
@@ -35,26 +47,26 @@ const NavBar: React.FC<NavBarProps> = ({
             Home
           </div>
           <div
-            className="cursor-pointer nav-text  lg:px-4"
-            onClick={() => scrollToRef(projectsRef.current)}
+            className="cursor-pointer nav-text lg:px-4"
+            onClick={() => handleNavigation(projectsRef.current)}
           >
             Projects
           </div>
           <div
             className="cursor-pointer nav-text px-2 lg:px-4"
-            onClick={() => scrollToRef(contactRef.current)}
+            onClick={() => handleNavigation(contactRef.current)}
           >
             Contact Me
           </div>
           <div
             className="cursor-pointer nav-text pr-2 lg:px-4"
-            onClick={handleDownloadPdf}
           >
             <a
               href={`./Nischal_Mantri_Resume.pdf`}
               download
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => setIsMenu(false)}
             >
               My Resume
             </a>
