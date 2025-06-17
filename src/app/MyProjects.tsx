@@ -21,8 +21,24 @@ import C from "../../public/svg/c.svg";
 import Zealliance from "../../public/images/Zealliance.png";
 import URLShortner from "../../public/images/URLShortner.png";
 import PasswordManager from "../../public/images/PasswordManager.png";
+import Ping from "../../public/images/Ping.png";
+import memorise from "../../public/images/memorise.png";
 
 const projectDetails = [
+  {
+    title: "Ping",
+    description: "Online Messaging app to connect with friends",
+    techStack: ["React.js", "Typescript", "Tailwind"],
+    link: "https://pings-iota.vercel.app/",
+    Src: { Ping },
+  },
+  {
+    title: "Memorise",
+    description: "A notes app to help you organize and remember important information.",
+    techStack: ["React.js", "Typescript", "Tailwind"],
+    link: "https://github.com/Nischa1Mv/memo-rise",
+    Src: { memorise },
+  },
   {
     title: "Zealliance",
     description: "An all-in-one Fitness app one will ever need",

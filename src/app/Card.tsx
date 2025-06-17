@@ -12,7 +12,10 @@ interface CardProps {
     | StaticImageData
     | { Zealliance: StaticImageData }
     | { URLShortner: StaticImageData }
-    | { PasswordManager: StaticImageData };
+    | { PasswordManager: StaticImageData }
+    |{Ping: StaticImageData}
+    |{memorise: StaticImageData}
+    ;
   link: string;
 }
 function Card({ title, description, techStack, src, link }: CardProps) {
@@ -30,7 +33,13 @@ function Card({ title, description, techStack, src, link }: CardProps) {
     imageSrc = src.URLShortner;
   } else if ("PasswordManager" in src) {
     imageSrc = src.PasswordManager;
-  } else {
+  }else if ("Ping" in src) {
+    imageSrc = src.Ping;
+  }
+  else if ("memorise" in src) {
+    imageSrc = src.memorise;
+  }
+   else {
     imageSrc = src; // It's a StaticImageData directly
   }
 
