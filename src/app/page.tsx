@@ -4,15 +4,12 @@ import { useEffect, useRef, useState } from "react";
 import MyProjects from "./MyProjects";
 import ContactMe from "./ContactMe";
 import Main from "./Main";
-import NavBar from "./NavBar";
 
 const Home: React.FC = () => {
   const divRefs = useRef<(HTMLDivElement | null)[]>(new Array(3).fill(null));
   const scrollSVG = useRef<SVGSVGElement | null>(null);
   const [isRotated, setIsRotated] = useState(false);
   const [isBottom, setIsBottom] = useState(false);
-  const projectsRef = useRef<HTMLDivElement | null>(null);
-  const contactRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {

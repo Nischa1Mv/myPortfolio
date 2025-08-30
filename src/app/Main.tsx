@@ -117,15 +117,15 @@ function Main({ divRefs }: MainProps) {
               Full Stack Developer
             </div>
             <p className="lg:mt-10 mt-4 text-pretty lg:text-sm text-xs font-semibold text-secondary-foreground">
-              I'm passionate about clean, functional design, believing in the
+              I&apos;m passionate about clean, functional design, believing in the
               power of minimalism—where every line of code has a purpose and
-              every pixel tells a story. Whether I'm building robust back-end
+              every pixel tells a story. Whether I&apos;m building robust back-end
               systems or crafting intuitive front-end interfaces, my focus is
               always on achieving a perfect balance between simplicity and
               functionality.
             </p>
             <p className="block text-xs mt-4 text-pretty lg:text-sm font-semibold text-secondary-foreground">
-              When I'm not immersed in coding, you'll likely find me diving into
+              When I&apos;m not immersed in coding, you&apos;ll likely find me diving into
               the latest tech articles or exploring new frameworks. In my free
               time, I enjoy gaming and staying active at the gym, always
               striving to improve myself. I also attend numerous tech events,
@@ -133,8 +133,8 @@ function Main({ divRefs }: MainProps) {
               collaborate on exciting projects.
             </p>
             <p className="mt-4 text-pretty text-xs lg:text-sm font-semibold text-secondary-foreground">
-              Whether it's a challenging workout, an intense gaming session, or
-              a stimulating tech conference, I'm constantly pushing my limits
+              Whether it&apos;s a challenging workout, an intense gaming session, or
+              a stimulating tech conference, I&apos;m constantly pushing my limits
               and seeking new ways to grow both personally and professionally.
             </p>
           </div>
