@@ -20,11 +20,11 @@ const NavBar: React.FC<NavBarProps> = ({
       top: 0,
       behavior: "smooth",
     });
-    
+
     // Close menu after clicking (for mobile)
     setIsMenu(false);
   };
-  
+
   // Function to handle section navigation and close menu
   const handleNavigation = (ref: HTMLDivElement | null) => {
     console.log("Navigating to section", ref);
@@ -37,29 +37,29 @@ const NavBar: React.FC<NavBarProps> = ({
   };
 
   return (
-    <nav className="nav-text-bg flex lg:py-1 lg:w-fit w-full lg:justify-normal justify-end px-4">
+    <nav className="flex lg:py-1 lg:w-fit w-full lg:justify-normal justify-end px-4">
       {isMenu && (
-        <div className="menu-container flex text-sm lg:text-lg text-[#111827] items-center lg:justify-normal justify-between w-full lg:px-4">
-          <div 
-            className="cursor-pointer nav-text px-2 lg:px-4"
+        <div className="flex text-sm lg:text-lg text-[#111827] items-center  lg:justify-normal justify-between w-full lg:px-4">
+          <div
+            className="cursor-pointer nav-text px-2 lg:px-4 mix-blend-difference text-secondary  hover:mix-blend-normal"
             onClick={scrollToHome}
           >
             Home
           </div>
           <div
-            className="cursor-pointer nav-text lg:px-4"
+            className="cursor-pointer nav-text lg:px-4 mix-blend-difference text-secondary  hover:mix-blend-normal"
             onClick={() => handleNavigation(projectsRef.current)}
           >
             Projects
           </div>
           <div
-            className="cursor-pointer nav-text px-2 lg:px-4"
+            className="cursor-pointer nav-text px-2 lg:px-4 mix-blend-difference text-secondary  hover:mix-blend-normal  "
             onClick={() => handleNavigation(contactRef.current)}
           >
             Contact Me
           </div>
           <div
-            className="cursor-pointer nav-text pr-2 lg:px-4"
+            className="cursor-pointer nav-text pr-2 lg:px-4 mix-blend-difference text-secondary  hover:mix-blend-normal "
           >
             <a
               href={`./Nischal_Mantri_Resume.pdf`}

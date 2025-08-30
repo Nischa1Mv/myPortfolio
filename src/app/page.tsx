@@ -4,12 +4,15 @@ import { useEffect, useRef, useState } from "react";
 import MyProjects from "./MyProjects";
 import ContactMe from "./ContactMe";
 import Main from "./Main";
+import NavBar from "./NavBar";
 
 const Home: React.FC = () => {
   const divRefs = useRef<(HTMLDivElement | null)[]>(new Array(3).fill(null));
   const scrollSVG = useRef<SVGSVGElement | null>(null);
   const [isRotated, setIsRotated] = useState(false);
   const [isBottom, setIsBottom] = useState(false);
+  const projectsRef = useRef<HTMLDivElement | null>(null);
+  const contactRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,7 +82,6 @@ const Home: React.FC = () => {
       });
     }
   };
-
   return (
     <>
       {/* Down Arrow -> scrollSVG  */}
@@ -95,9 +97,8 @@ const Home: React.FC = () => {
         <svg
           ref={scrollSVG}
           onClick={handleClick}
-          className={` transition-transform duration-300 ${
-            isRotated ? "rotate-180" : ""
-          }   hidden lg:flex cursor-pointer  `}
+          className={` transition-transform duration-300 ${isRotated ? "rotate-180" : ""
+            }   hidden lg:flex cursor-pointer  `}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 -960 960 960"
           width="50"
@@ -107,6 +108,7 @@ const Home: React.FC = () => {
           <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
         </svg>
       </div>
+
 
       <Main divRefs={divRefs} />
 

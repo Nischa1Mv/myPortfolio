@@ -92,7 +92,7 @@ function MyProjects({ divRefs }: Props) {
   return (
     <>
       <div
-        className="h-[100vh] pt-7 lg:pt-10 lg:py-20 px-5 lg:px-20"
+        className="h-[100vh] pt-7 lg:pt-10 lg:py-20 px-5 lg:px-20 bg-projects"
         id="page2"
         ref={(el) => {
           if (divRefs.current) {
@@ -102,7 +102,7 @@ function MyProjects({ divRefs }: Props) {
       >
         <div className="lg:text-5xl text-2xl font-bold">
           <span className="text-[#D23770]">My</span>
-          <span className="text-[#37D299]"> Projects</span>
+          <span className="text-primary"> Projects</span>
         </div>
         <div
           className=" flex lg:flex-row flex-col border border-opacity-20 border-white lg:border-none lg:ml-6  xl:gap-6 overflow-x-auto overflow-y-auto lg:h-fit h-[55%]   mt-8 mb-5 scrollbar-hide lg:mb-10 py-2 px-2"

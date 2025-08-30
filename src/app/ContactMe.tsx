@@ -63,14 +63,14 @@ function ContactMe({ divRefs }: ContactMeProps) {
 
   return (
     <div
-      className=" h-[100vh] py-10 px-6 lg:px-20 bg-[#F1FAEE] w-full flex-col flex items-center"
+      className=" h-[100vh] py-10 px-6 lg:px-20 bg-secondary w-full flex-col flex items-center"
       id="page3"
       ref={(el) => {
         divRefs.current[2] = el;
       }}
     >
       <div className="relative inline-block mb-10">
-        <div className="text-3xl lg:text-5xl z-10 relative font-bold text-[#37d299] flex justify-center items-center w-full">
+        <div className="text-3xl lg:text-5xl z-10 relative font-bold text-primary flex justify-center items-center w-full">
           Get in Touch
         </div>
         <div className="bg-[#fde68a] absolute bottom-2 block w-full h-2 z-2"></div>
