@@ -10,7 +10,6 @@ interface MainProps {
 }
 function Main({ divRefs }: MainProps) {
   // Create refs that point to elements in divRefs
-  const homeRef = useRef<HTMLDivElement | null>(null);
   const projectsRef = useRef<HTMLDivElement | null>(null);
   const contactRef = useRef<HTMLDivElement | null>(null);
   
