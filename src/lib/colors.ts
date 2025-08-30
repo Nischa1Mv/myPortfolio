@@ -49,11 +49,14 @@ export const colors = {
 // Helper functions for getting colors
 export const getColor = (colorPath: string) => {
   const keys = colorPath.split('.');
-  let current: any = colors;
+  let current: typeof colors | string = colors;
   
   for (const key of keys) {
-    current = current[key];
-    if (current === undefined) return undefined;
+    if (typeof current === 'object' && current !== null && key in current) {
+      current = (current as Record<string, any>)[key];
+    } else {
+      return undefined;
+    }
   }
   
   return current;
