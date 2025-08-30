@@ -6,7 +6,7 @@
  */
 
 import React from 'react';
-import { colorClasses, colors } from '../lib/colors';
+import { colors } from '../lib/colors';
 
 const ColorDemo: React.FC = () => {
   return (
