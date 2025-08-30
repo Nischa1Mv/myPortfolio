@@ -47,19 +47,20 @@ export const colors = {
 } as const;
 
 // Helper functions for getting colors
-export const getColor = (colorPath: string) => {
+export const getColor = (colorPath: string): string | undefined => {
   const keys = colorPath.split('.');
-  let current: typeof colors | string = colors;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let current: any = colors;
   
   for (const key of keys) {
-    if (typeof current === 'object' && current !== null && key in current) {
-      current = (current as Record<string, any>)[key];
+    if (current && typeof current === 'object' && key in current) {
+      current = current[key];
     } else {
       return undefined;
     }
   }
   
-  return current;
+  return typeof current === 'string' ? current : undefined;
 };
 
 // Tailwind class utilities
