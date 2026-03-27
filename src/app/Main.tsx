@@ -4,6 +4,7 @@ import { useRef, useEffect } from "react";
 import Image from "next/image";
 import Socials from "./socials";
 import NavBar from "./NavBar";
+import TypingMiniGame from "@/components/TypingMiniGame";
 import profilePicture from "../../public/images/profilePicture.jpeg";
 
 interface MainProps {
@@ -137,6 +138,8 @@ function Main({ divRefs }: MainProps) {
               a stimulating tech conference, I&apos;m constantly pushing my limits
               and seeking new ways to grow both personally and professionally.
             </p>
+
+            <TypingMiniGame />
           </div>
           <div className="hidden lg:flex w-full justify-center items-center px-6 py-4">
             <div
