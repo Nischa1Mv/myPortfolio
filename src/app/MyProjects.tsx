@@ -62,6 +62,7 @@ const projectDetails = [
     Src: { URLShortner },
   },
 ];
+
 interface Props {
   divRefs: React.RefObject<(HTMLDivElement | null)[]>;
 }
@@ -87,7 +88,7 @@ function MyProjects({ divRefs }: Props) {
   return (
     <>
       <div
-        className="min-h-[100svh] pt-8 lg:pt-10 lg:py-16 px-5 lg:px-20 bg-projects"
+        className="min-h-[100svh] py-8 lg:py-10 px-5 lg:px-20 bg-projects"
         id="page2"
         ref={(el) => {
           if (divRefs.current) {
@@ -103,7 +104,7 @@ function MyProjects({ divRefs }: Props) {
         </div>
 
         <div
-          className="mx-auto mt-8 mb-8 w-full max-w-[1500px] grid grid-cols-1 gap-6 lg:flex lg:gap-8 lg:overflow-x-auto lg:overflow-y-hidden lg:scroll-smooth lg:snap-x lg:snap-mandatory scrollbar-hide"
+          className="mx-auto mt-5 mb-6 w-full max-w-[1500px] grid grid-cols-1 gap-5 lg:flex lg:gap-6 lg:overflow-x-auto lg:overflow-y-hidden lg:scroll-smooth lg:snap-x lg:snap-mandatory scrollbar-hide"
           ref={containerRef}
           onWheel={handleScroll}
         >
@@ -129,8 +130,8 @@ function MyProjects({ divRefs }: Props) {
         {/* <div className="text-xl mx-6 my-6 font-bold lg:hidden flex">
       My Skills
     </div> */}
-        <div className="flex lg:hidden justify-center items-center space-x-8 mb-2">
-          <div className="overflow-hidden whitespace-nowrap flex gap-10 hover:pause-animation   mb-10">
+        <div className="flex lg:hidden justify-center items-center space-x-8 mb-1">
+          <div className="overflow-hidden whitespace-nowrap flex gap-10 hover:pause-animation mb-6">
             <div className="flex lg:flex-row flex-col lg:animate-scroll-left lg:space-x-16">
               <Skill src={react.src} label="React" />
               <Skill src={next.src} label="Next.js" />
@@ -147,7 +148,7 @@ function MyProjects({ divRefs }: Props) {
           </div>
 
           {/* Second row */}
-          <div className="overflow-hidden   whitespace-nowrap flex gap-10 hover:pause-animation mb-10">
+          <div className="overflow-hidden whitespace-nowrap flex gap-10 hover:pause-animation mb-6">
             <div className="flex lg:flex-row flex-col lg:animate-scroll-left lg:space-x-16">
               <Skill src={Css3.src} label="CSS3" />
               <Skill src={MongoDB.src} label="MongoDB" />
@@ -164,7 +165,7 @@ function MyProjects({ divRefs }: Props) {
         </div>
         {/* PC Screen */}
         {/* First row */}
-        <div className="overflow-hidden whitespace-nowrap hidden lg:flex gap-10 hover:pause-animation mb-10 mt-2">
+        <div className="overflow-hidden whitespace-nowrap hidden lg:flex gap-10 hover:pause-animation mb-6 mt-1">
           <div className="flex animate-scroll-left  space-x-16">
             <Skill src={react.src} label="React" />
             <Skill src={next.src} label="Next.js" />
@@ -190,7 +191,7 @@ function MyProjects({ divRefs }: Props) {
         </div>
 
         {/* Second row */}
-        <div className="overflow-hidden whitespace-nowrap hidden lg:flex gap-10 hover:pause-animation mb-8">
+        <div className="overflow-hidden whitespace-nowrap hidden lg:flex gap-10 hover:pause-animation mb-3">
           <div className="flex animate-scroll-left  space-x-16">
             <Skill src={Css3.src} label="CSS3" />
             <Skill src={MongoDB.src} label="MongoDB" />

@@ -91,7 +91,7 @@ function Main({ divRefs }: MainProps) {
         />
         </div>
 
-      <div className="relative h-[90vh] bg-secondary lg:py-20" id="page1">
+      <div className="relative min-h-[100svh] bg-secondary lg:py-20" id="page1">
         {/* Mobile Profile Image */}
         <div
           className="lg:hidden w-fit m-auto p-1 border-2 border-primary rounded-xl bg-card shadow-md"
