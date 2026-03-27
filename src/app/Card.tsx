@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { StaticImageData } from "next/image";
-import { useState } from "react";
 
 interface CardProps {
   title: string;
@@ -16,11 +15,10 @@ interface CardProps {
     | { Ping: StaticImageData }
     | { memorise: StaticImageData };
   link: string;
+  priority?: boolean;
 }
 
-function Card({ title, description, techStack, src, link }: CardProps) {
-  const [isHovered, setIsHovered] = useState<boolean>(false);
-
+function Card({ title, description, techStack, src, link, priority = false }: CardProps) {
   let imageSrc: string | StaticImageData;
 
   if (typeof src === "string") {
@@ -40,45 +38,32 @@ function Card({ title, description, techStack, src, link }: CardProps) {
   }
 
   return (
-    <div
-      className="group relative rounded-2xl overflow-hidden w-full h-[50%] lg:min-w-[27rem] lg:min-h-[22rem] aspect-square lg:aspect-video shadow-lg border border-[#f1faee] bg-gradient-to-br from-[#f1faee]/10 to-[#141414]/80 transition-all duration-300 hover:shadow-2xl hover:scale-[1.025] hover:border-[#fde68a]"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+    <Link
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative block w-full min-h-[19rem] lg:min-w-[26rem] lg:min-h-[21rem] lg:snap-start overflow-hidden rounded-2xl border-2 border-white/25 bg-[#0f172a] shadow-[0_10px_24px_rgba(0,0,0,0.35)] transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#141414]"
     >
-      {/* Image */}
-      <Link href={link} passHref legacyBehavior>
-        <a target="_blank" rel="noopener noreferrer" className="block h-full">
-          <Image
-            className="rounded-2xl object-cover transition-transform duration-500 group-hover:scale-105"
-            src={imageSrc}
-            alt={`${title} project image`}
-            layout="fill"
-            objectFit="cover"
-            quality={90}
-            priority
-          />
-          {/* Overlay for hover effect */}
-          <div
-            className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent transition-opacity duration-300 ${
-              isHovered ? "opacity-100" : "opacity-60"
-            }`}
-          />
-        </a>
-      </Link>
+      <div className="absolute inset-[3px] overflow-hidden rounded-[14px]">
+        <Image
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          src={imageSrc}
+          alt={`${title} project preview`}
+          fill
+          sizes="(max-width: 1024px) 100vw, 42vw"
+          quality={90}
+          priority={priority}
+        />
 
-      {/* Floating badge for project title */}
-      <div className="absolute top-3 left-3 z-20 bg-[#fde68a]/90 text-[#141414] px-3 py-0.5 rounded-full font-medium text-xs shadow-md backdrop-blur-md">
-        {title}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/10" />
       </div>
 
-      {/* Details panel */}
-      <ProjectDetails
-        title={title}
-        description={description}
-        techStack={techStack}
-        isVisible={isHovered}
-      />
-    </div>
+      <div className="absolute right-4 top-4 z-20 rounded-full border border-white/35 bg-black/30 px-2 py-1 text-[11px] font-semibold uppercase tracking-wide text-white/95 backdrop-blur-sm transition-colors duration-300 group-hover:border-primary/80 group-hover:text-[#f1faee]">
+        View Project
+      </div>
+
+      <ProjectDetails title={title} description={description} techStack={techStack} />
+    </Link>
   );
 }
 
@@ -88,28 +73,18 @@ interface ProjectDetailsProps {
   title: string;
   description: string;
   techStack: string[];
-  isVisible: boolean;
 }
 
-function ProjectDetails({
-  title,
-  description,
-  techStack,
-  isVisible,
-}: ProjectDetailsProps) {
+function ProjectDetails({ title, description, techStack }: ProjectDetailsProps) {
   return (
     <div
-      className={`px-4 py-3 bg-[rgba(241,250,238,0.97)] backdrop-blur-md w-full absolute bottom-0 rounded-b-2xl text-[#141414] z-30 transition-all duration-300 ${
-        isVisible
-          ? "opacity-100 translate-y-0"
-          : "opacity-0 translate-y-8 pointer-events-none"
-      } shadow-lg`}
+      className="absolute inset-x-0 bottom-0 z-30 translate-y-0 px-4 pb-4 pt-3 text-[#f8fafc]"
     >
-      <h3 className="text-sm font-bold lg:text-base mb-1">{title}</h3>
-      <p className="text-xs lg:text-sm font-medium mb-2 line-clamp-2 text-gray-700">
+      <h3 className="text-lg font-bold tracking-tight text-[#f1faee]">{title}</h3>
+      <p className="mt-1 text-sm leading-relaxed text-white/90 lg:line-clamp-2">
         {description}
       </p>
-      <div className="flex flex-wrap gap-1.5">
+      <div className="mt-3 flex flex-wrap gap-2">
         {techStack.map((tech, index) => (
           <TechStack key={index} tech={tech} />
         ))}
@@ -123,7 +98,7 @@ interface TechStackProps {
 }
 function TechStack({ tech }: TechStackProps) {
   return (
-    <div className="bg-[#141414] text-[#fde68a] font-medium px-2 py-0.5 rounded-md shadow-sm border border-[#fde68a] text-[10px] lg:text-xs tracking-tight">
+    <div className="rounded-full border border-white/35 bg-white/10 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-[#f1faee] backdrop-blur-sm">
       {tech}
     </div>
   );

@@ -68,6 +68,7 @@ interface Props {
 
 function MyProjects({ divRefs }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
+
   const handleScroll = (event: React.WheelEvent<HTMLDivElement>) => {
     if (containerRef.current) {
       const container = containerRef.current;
@@ -82,17 +83,11 @@ function MyProjects({ divRefs }: Props) {
       }
     }
   };
-  const handleMouseEnter = () => {
-    document.body.style.overflow = "hidden"; // Disable vertical scrolling
-  };
 
-  const handleMouseLeave = () => {
-    document.body.style.overflow = "auto"; // Enable vertical scrolling
-  };
   return (
     <>
       <div
-        className="h-[100vh] pt-7 lg:pt-10 lg:py-20 px-5 lg:px-20 bg-projects"
+        className="min-h-[100svh] pt-8 lg:pt-10 lg:py-16 px-5 lg:px-20 bg-projects"
         id="page2"
         ref={(el) => {
           if (divRefs.current) {
@@ -100,67 +95,41 @@ function MyProjects({ divRefs }: Props) {
           }
         }}
       >
-        <div className="lg:text-5xl text-2xl font-bold">
-          <span className="text-[#D23770]">My</span>
-          <span className="text-primary"> Projects</span>
+        <div className="mx-auto w-full max-w-[1500px]">
+          <div className="lg:text-5xl text-3xl font-bold">
+            <span className="text-[#D23770]">My</span>
+            <span className="text-primary"> Projects</span>
+          </div>
         </div>
+
         <div
-          className=" flex lg:flex-row flex-col border border-opacity-20 border-white lg:border-none lg:ml-6  xl:gap-6 overflow-x-auto overflow-y-auto lg:h-fit h-[55%]   mt-8 mb-5 scrollbar-hide lg:mb-10 py-2 px-2"
+          className="mx-auto mt-8 mb-8 w-full max-w-[1500px] grid grid-cols-1 gap-6 lg:flex lg:gap-8 lg:overflow-x-auto lg:overflow-y-hidden lg:scroll-smooth lg:snap-x lg:snap-mandatory scrollbar-hide"
           ref={containerRef}
           onWheel={handleScroll}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-          // style={{
-          //   scrollBehavior: "smooth",
-          //   pointerEvents: "auto",
-          //   background: "#141414",
-          //   boxShadow: "0 4px 12px rgba(255, 255, 255, 0.15)",
-          //   backdropFilter: "blur(0px)", // backdrop-filter in camelCase
-          //   WebkitBackdropFilter: "blur(0px)", // -webkit-backdrop-filter in camelCase
-          //   borderRadius: "10px", // border-radius in camelCase
-          //   // border: "1px solid rgba(255, 255, 255, 0.18)",
-          // }}
         >
           {projectDetails.map((project, index) => (
-            <>
+            <React.Fragment key={project.title}>
               <Card
-                key={index}
                 title={project.title}
                 description={project.description}
                 techStack={project.techStack}
                 src={project.Src}
                 link={project.link}
+                priority={index === 0}
               />
-              <div className="lg:hidden  mt-4 mb-10 flex flex-col justify-center items-start gap-1 ">
-                <h1 className="font-extrabold text-xl ">
-                  <a href={project.link} target="_blank">
-                    {project.title}
-                  </a>
-                </h1>
-                <div className="font-medium text-md">{project.description}</div>
-                <div className="font-medium text-xs flex gap-2 ">
-                  {project.techStack.map((techStack, index) => (
-                    <div
-                      className="rounded-xl border-2 px-2 hover:bg-white hover:text-black"
-                      key={index}
-                    >
-                      {techStack}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </>
+            </React.Fragment>
           ))}
         </div>
+
         {/* Mobile screen */}
-        <div className="lg:hidden flex  text-2xl gap-2 mb-4  font-bold">
+        <div className="lg:hidden flex text-2xl gap-2 mb-4 font-bold">
           <span className="text-[#D23770]">My</span>
           <span className="text-[#37D299]"> Skills</span>
         </div>
         {/* <div className="text-xl mx-6 my-6 font-bold lg:hidden flex">
       My Skills
     </div> */}
-        <div className="flex lg:hidden justify-center items-center space-x-10 mb-2  ">
+        <div className="flex lg:hidden justify-center items-center space-x-8 mb-2">
           <div className="overflow-hidden whitespace-nowrap flex gap-10 hover:pause-animation   mb-10">
             <div className="flex lg:flex-row flex-col lg:animate-scroll-left lg:space-x-16">
               <Skill src={react.src} label="React" />
@@ -195,7 +164,7 @@ function MyProjects({ divRefs }: Props) {
         </div>
         {/* PC Screen */}
         {/* First row */}
-        <div className="overflow-hidden whitespace-nowrap hidden lg:flex gap-10 hover:pause-animation mb-10">
+        <div className="overflow-hidden whitespace-nowrap hidden lg:flex gap-10 hover:pause-animation mb-10 mt-2">
           <div className="flex animate-scroll-left  space-x-16">
             <Skill src={react.src} label="React" />
             <Skill src={next.src} label="Next.js" />
@@ -221,7 +190,7 @@ function MyProjects({ divRefs }: Props) {
         </div>
 
         {/* Second row */}
-        <div className="overflow-hidden whitespace-nowrap hidden lg:flex gap-10 hover:pause-animation mb-10">
+        <div className="overflow-hidden whitespace-nowrap hidden lg:flex gap-10 hover:pause-animation mb-8">
           <div className="flex animate-scroll-left  space-x-16">
             <Skill src={Css3.src} label="CSS3" />
             <Skill src={MongoDB.src} label="MongoDB" />
