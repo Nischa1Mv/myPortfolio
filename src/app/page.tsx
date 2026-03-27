@@ -7,38 +7,50 @@ import Main from "./Main";
 
 const Home: React.FC = () => {
   const divRefs = useRef<(HTMLDivElement | null)[]>(new Array(3).fill(null));
-  const scrollSVG = useRef<SVGSVGElement | null>(null);
-  const [isRotated, setIsRotated] = useState(false);
-  const [isBottom, setIsBottom] = useState(false);
+  const [isAtLastSection, setIsAtLastSection] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
+    const updateLastSectionState = () => {
       const scrollPosition = window.innerHeight + window.scrollY;
       const pageHeight = document.documentElement.scrollHeight;
+      const lastSection =
+        divRefs.current[2] ||
+        (document.getElementById("page3") as HTMLDivElement | null);
 
-      // Check if the user is within 10px of the bottom
-      if (scrollPosition >= pageHeight - 10) {
-        setIsBottom(true);
-        setIsRotated(true);
-      } else {
-        setIsBottom(false);
-        setIsRotated(false);
+      if (!lastSection) {
+        setIsAtLastSection(scrollPosition >= pageHeight - 10);
+        return;
       }
+
+      // Flip as soon as viewport reaches the final section start area.
+      const lastSectionTriggerY =
+        lastSection.offsetTop - window.innerHeight * 0.15;
+      const enteredLastSection = window.scrollY >= lastSectionTriggerY;
+
+      // Invert as soon as user reaches the final section.
+      setIsAtLastSection(enteredLastSection || scrollPosition >= pageHeight - 10);
     };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    updateLastSectionState();
+    window.addEventListener("scroll", updateLastSectionState);
+    window.addEventListener("resize", updateLastSectionState);
+
+    return () => {
+      window.removeEventListener("scroll", updateLastSectionState);
+      window.removeEventListener("resize", updateLastSectionState);
+    };
   }, []);
 
   // Handle click to scroll to the nearest div
   const handleClick = () => {
-    if (!divRefs.current.length) return;
+    const sections = divRefs.current.filter(
+      (section): section is HTMLDivElement => section !== null
+    );
 
-    let nearestDiv: HTMLDivElement | null = null;
-    let minDistance = Infinity;
+    if (!sections.length) return;
 
-    // If at the bottom, scroll to the top
-    if (isBottom) {
+    // If in the final section, scroll back to the top.
+    if (isAtLastSection) {
       window.scrollTo({
         top: 0,
         behavior: "smooth",
@@ -46,66 +58,49 @@ const Home: React.FC = () => {
       return;
     }
 
-    // Loop through all divs to find the nearest one
-    divRefs.current.forEach((div, index) => {
-      if (!div) return;
-      const rect = div.getBoundingClientRect();
-      const distance = rect.top;
+    const currentViewportMarker = window.scrollY + window.innerHeight * 0.45;
+    const nextSection = sections.find(
+      (section) => section.offsetTop > currentViewportMarker
+    );
 
-      //div occupies the full screen
-      if (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= window.innerHeight &&
-        rect.right <= window.innerWidth
-      ) {
-        // Check if the div is fully in view
-
-        console.log(" div is fully in view");
-        nearestDiv = divRefs.current[index + 1];
-      }
-      // If the div is partially visible, find the nearest one
-      else if (distance < minDistance && distance > 0) {
-        minDistance = distance;
-        nearestDiv = div;
-      }
-    });
-
-    // Scroll to the nearest div
-    if (nearestDiv) {
-      (nearestDiv as HTMLDivElement).scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+    if (nextSection) {
+      nextSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
     }
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   };
   return (
     <>
-      {/* Down Arrow -> scrollSVG  */}
-      <div
-        className="z-50 fixed right-8 bottom-8 border-2 border-white rounded-2xl mix-blend-difference"
-        style={{
-          background: "rgba(255, 255, 255, 0.05)",
-          boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
-          backdropFilter: "blur(3.5px)",
-          WebkitBackdropFilter: "blur(3.5px)",
-        }}
+      <button
+        type="button"
+        aria-label={
+          isAtLastSection ? "Scroll back to top" : "Scroll to next section"
+        }
+        className="scroll-nav-btn mix-blend-difference z-50 fixed right-5 bottom-5 lg:right-8 lg:bottom-8"
+        onClick={handleClick}
       >
-        <svg
-          ref={scrollSVG}
-          onClick={handleClick}
-          className={` transition-transform duration-300 ${isRotated ? "rotate-180" : ""
-            }   hidden lg:flex cursor-pointer  `}
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 -960 960 960"
-          width="50"
-          height="50"
-          fill="currentColor"
-        >
-          <path d="M480-344 240-584l56-56 184 184 184-184 56 56-240 240Z" />
-        </svg>
-      </div>
-
+        <span className="scroll-nav-float">
+          <svg
+            className={`scroll-nav-icon h-12 w-12 lg:h-14 lg:w-14 transition-transform duration-500 ease-out ${
+              isAtLastSection ? "rotate-180" : ""
+            }`}
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="m6 8 6 6 6-6" />
+            <path d="m6 13 6 6 6-6" />
+          </svg>
+        </span>
+      </button>
 
       <Main divRefs={divRefs} />
 

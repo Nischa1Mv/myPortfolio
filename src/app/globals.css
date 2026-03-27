@@ -27,11 +27,30 @@
   --projects-foreground: #f1f5f9;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
+}
+
+html,
+body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.45s ease, color 0.45s ease;
+}
+
+#page1,
+#page2,
+#page3 {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 @layer utilities {
@@ -240,7 +259,7 @@ input:focus {
   transition: all 0.3s ease;
 }
 .nav-text-adaptive:hover {
-  color: ffd966;
+  color: #ffd966;
 }
 
 @media (prefers-color-scheme: light) {
@@ -269,4 +288,87 @@ input:focus {
 
 .animate-fade-in {
   animation: fade-in 0.3s ease-out;
+}
+
+.scroll-nav-btn {
+  position: fixed;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem;
+  border-radius: 0;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background-color 220ms ease,
+    border-color 220ms ease;
+}
+
+@keyframes arrow-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
+@keyframes arrow-pulse {
+  0%,
+  100% {
+    opacity: 0.95;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0));
+  }
+}
+
+.scroll-nav-float {
+  animation: arrow-float 1.6s ease-in-out infinite;
+}
+
+.scroll-nav-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: none;
+}
+
+.scroll-nav-btn:hover .scroll-nav-float {
+  animation-duration: 1s, 1.2s;
+}
+
+.scroll-nav-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.scroll-nav-btn:active .scroll-nav-icon {
+  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.95));
+}
+
+.scroll-nav-btn:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-nav-btn,
+  .scroll-nav-btn svg {
+    transition: none;
+  }
+
+  .scroll-nav-icon {
+    animation: none;
+  }
+
+  .scroll-nav-float {
+    animation: none;
+  }
 }
